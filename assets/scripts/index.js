@@ -2,6 +2,7 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
+const store = require('./store')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -13,7 +14,7 @@ $(() => {
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
-const board = ['', '', '', '', '', '', '', '', '']
+const board = store.cells
 
 const isEmpty = function (element) {
   const len = element.html().length
@@ -24,24 +25,16 @@ const isEmpty = function (element) {
     return false
   }
 }
-let clickCount = 0
-
-const countClicks = function () {
-  clickCount += 1
-  return clickCount
-}
-const getPlayer = function () {
-  return clickCount % 2 === 0 ? 'o' : 'x'
-}
+let clickCount = store.clickCount
 
 // add response if empty and add to board
-const addResponse = function (element) {
+const playGame = function (element) {
   const player = clickCount % 2 === 0 ? 'o' : 'x'
   // clickCount = countClicks()
   console.log('click count', clickCount)
   board[element.attr('id')] = player
   element.html(player)
-  let isWinner = checkForWinner(board, player)
+  const isWinner = checkForWinner(board, player)
 
   console.log(isWinner)
   if (isWinner) {
@@ -52,8 +45,7 @@ const addResponse = function (element) {
     console.log('There is a tie.')
     return true
   }
-//   console.log('board', board)
-//   // checkForWinner(board, player)
+  return isWinner
 }
 
 const clearBoard = function () {
@@ -80,51 +72,20 @@ const checkForWinner = function (board, player) {
 }
 
 $(() => {
-  clickCount = 0
-  // console.log(clickCount)
   $('.box').on('click', function (event) {
-    // console.log(clickCount)
-    // event.stopPropagation()
     event.preventDefault()
+    if (store.status === 'active') {
     // console.log('isEmpty', isEmpty($(this)))
-    if (isEmpty($(this))) {
-      clickCount += 1
-      addResponse($(this))
-      console.log(addResponse($(this)))
-      if (addResponse($(this))) {
-        event.stopPropagation()
+      if (isEmpty($(this))) {
+        clickCount += 1
+        playGame($(this))
+        console.log('playGame ', playGame($(this)))
+        if (playGame($(this))) {
+          store.winner = $(this).html()
+          // console.log('store winner ', store.winner)
+          store.status = 'inactive'
+        }
       }
-      // let player = getPlayer
-      // let isWinner = checkForWinner(board, player)
-      // console.log('click count', clickCount)
-      // console.log(isWinner)
-      // if (isWinner) {
-      //   console.log('Winner ' + player)
-      // } else if (clickCount === 9) {
-      //   console.log('There is a tie.')
-      // }
     }
-    // console.log('click count', clickCount)
-    // clearBoard()
-    // let isWinner
-    // let player
-    // for (let i = 0; i < board.length; i++) {
-    //   player = board[i]
-    //   console.log('player', player)
-    //   console.log('board', board)
-    //
-    //   isWinner = checkForWinner(board, player)
-    //   if (isWinner) {
-    //     break
-    //   } else {
-    //     continue
-    //   }
-    // }
-    // console.log(isWinner)
-    // if (isWinner) {
-    //   console.log('Winner is' + player)
-    // } else {
-    //   console.log('There is a tie')
-    // }
   })
 })
