@@ -14,7 +14,7 @@ $(() => {
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
-const board = store.cells
+let board = store.cells
 
 const isEmpty = function (element) {
   const len = element.html().length
@@ -40,18 +40,21 @@ const playGame = function (element) {
   if (isWinner) {
     console.log('Winner ' + player)
     // clickCount = 0
+    // $('button').html('Winner is ' + player + '! Play again.')
     return true
   } else if (clickCount === 9) {
     console.log('There is a tie.')
-    return true
+    // $('button').html('There is a tie, play again')
+    return false
   }
+
   return isWinner
 }
 
 const clearBoard = function () {
-  if (clickCount === 10) {
-    $('.box').text('')
-  }
+  // if (clickCount === 10) {
+  $('.box').text('')
+  // }
 }
 
 const checkForWinner = function (board, player) {
@@ -72,6 +75,14 @@ const checkForWinner = function (board, player) {
 }
 
 $(() => {
+  $('button').on('click', function (event) {
+    // event.preventDefault()
+    clickCount = 0
+    store.status = 'active'
+    clearBoard()
+    $(this).html('Play New Game')
+    board = ['', '', '', '', '', '', '', '', '']
+  })
   $('.box').on('click', function (event) {
     event.preventDefault()
     if (store.status === 'active') {
@@ -82,8 +93,17 @@ $(() => {
         console.log('playGame ', playGame($(this)))
         if (playGame($(this))) {
           store.winner = $(this).html()
-          // console.log('store winner ', store.winner)
-          store.status = 'inactive'
+          $('button').html('Winner is ' + store.winner + '!  Play again.')
+          console.log('store winner ', store.winner)
+        //   store.status = 'inactive'
+        //   // store.clickCount = 0
+        //   console.log(playGame($(this)))
+        } else if (clickCount === 9 && !playGame($(this))) {
+        //   clickCount = 0
+          $('button').html('There is a tie, play again.')
+        //   // $('.players').toogle()
+        //   store.status = 'inactive'
+        // }
         }
       }
     }
