@@ -29,26 +29,29 @@ let clickCount = store.clickCount
 
 // add response if empty and add to board
 const playGame = function (element) {
-  const player = clickCount % 2 === 0 ? 'o' : 'x'
+  const player = clickCount % 2 === 0 ? 'x' : 'o'
   // clickCount = countClicks()
-  console.log('click count', clickCount)
-  board[element.attr('id')] = player
-  element.html(player)
-  const isWinner = checkForWinner(board, player)
-
-  console.log(isWinner)
-  if (isWinner) {
-    console.log('Winner ' + player)
-    // clickCount = 0
-    // $('button').html('Winner is ' + player + '! Play again.')
-    return true
-  } else if (clickCount === 9) {
-    console.log('There is a tie.')
-    // $('button').html('There is a tie, play again')
-    return false
+  const empty = isEmpty(element)
+  if (store.status === 'active') {
+    if (empty) {
+      clickCount += 1
+      console.log('click count', clickCount)
+      board[element.attr('id')] = player
+      element.html(player)
+      const isWinner = checkForWinner(board, player)
+      console.log('isWinner ' + isWinner)
+      if (isWinner) {
+        console.log('Winner ' + player)
+        // clickCount = 0
+        $('button').html('Winner is ' + player + '! Play again.')
+        return true
+      } else if (clickCount === 9) {
+        console.log('There is a tie.')
+        $('button').html('There is a tie, play again')
+        return false
+      }
+    }
   }
-
-  return isWinner
 }
 
 const clearBoard = function () {
@@ -74,38 +77,21 @@ const checkForWinner = function (board, player) {
   }
 }
 
+const resetGame = function () {
+  clickCount = 0
+  store.status = 'active'
+  clearBoard()
+  board = ['', '', '', '', '', '', '', '', '']
+  $(this).html('Play New Game')
+}
+
 $(() => {
-  $('button').on('click', function (event) {
+  $('button').on('click', resetGame)
+
+  $('.box').on('click', function () {
     // event.preventDefault()
-    clickCount = 0
-    store.status = 'active'
-    clearBoard()
-    $(this).html('Play New Game')
-    board = ['', '', '', '', '', '', '', '', '']
-  })
-  $('.box').on('click', function (event) {
-    event.preventDefault()
     if (store.status === 'active') {
-    // console.log('isEmpty', isEmpty($(this)))
-      if (isEmpty($(this))) {
-        clickCount += 1
-        playGame($(this))
-        console.log('playGame ', playGame($(this)))
-        if (playGame($(this))) {
-          store.winner = $(this).html()
-          $('button').html('Winner is ' + store.winner + '!  Play again.')
-          console.log('store winner ', store.winner)
-        //   store.status = 'inactive'
-        //   // store.clickCount = 0
-        //   console.log(playGame($(this)))
-        } else if (clickCount === 9 && !playGame($(this))) {
-        //   clickCount = 0
-          $('button').html('There is a tie, play again.')
-        //   // $('.players').toogle()
-        //   store.status = 'inactive'
-        // }
-        }
-      }
+      playGame($(this))
     }
   })
 })
