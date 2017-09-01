@@ -8,7 +8,7 @@
 
 # API="${API_ORIGIN:-http://httpbin.org}"
 # URL_PATH="/patch?id=${ID}"
-API="${API_ORIGIN:-https://ga-library-api.herokuapp.com}"
+API="${API_ORIGIN:-http://tic-tac-toe.wdibos.com}"
 URL_PATH="/change-password/${ID}"
 
 curl "${API}${URL_PATH}" \
@@ -21,6 +21,3 @@ curl "${API}${URL_PATH}" \
       "old": "'"${OLD_PASSWORD}"'",
       "new": "'"${NEW_PASSWORD}"'"
     }
-  }'
-# OLD_PASSWORD='fin1' NEW_PASSWORD='fin2' TOKEN='BAhJIiU2M2EwMWUxYjJkNzkyOThlYmM1M2ZlNmUwOWJhNTU4NAY6BkVG--f41fe83a95ead3bb18448894a33c3293c1652b86'
-echo
