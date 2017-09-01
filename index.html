@@ -16,13 +16,13 @@
         <h1>Tic Tac Toe</h1>
       <!-- Button trigger modal -->
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Account</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#account">Account</button>
   </div>
 
 
 
       <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="disply: none;">
+      <div class="modal fade" id="account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="disply: none;">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -37,18 +37,21 @@
                   <fieldset>
                     <legend>Sign up</legend>
                     <input type="text" name="credentials[email]" placeholder="Email">
-                    <input type="text" name="credentials[password]" placeholder="Password">
-                    <input type="text" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+                    <input type="password" name="credentials[password]" placeholder="Password">
+                    <input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+                    <!-- <input type="password" id="password" name="credentials[password]" class="form-control" data-toggle="password"> -->
+
                     <input type="submit" name="submit" value="Sign up!">
                   </fieldset>
                   <!-- <button type="button" class="btn btn-default">Sign Up</button> -->
                 </form>
+                <!-- class="password" data-toggle="password" -->
 
                   <form id="sign-in">
                       <fieldset>
                         <legend>Sign In</legend>
                         <input type="text" name="credentials[email]" placeholder="Email">
-                        <input type="text" name="credentials[password]" placeholder="Password">
+                        <input type="password" name="credentials[password]" placeholder="Password">
                         <input type="submit" name="submit" value="Sign In!">
                       </fieldset>
                       <!-- <button type="submit" class="btn btn-default">Sign In</button> -->
@@ -57,8 +60,8 @@
                   <form id="change-password">
                     <fieldset>
                       <legend>Change Password</legend>
-                      <input type="text" name="passwords[old]" placeholder="Old Password">
-                      <input type="text" name="passwords[new]" placeholder="New Password">
+                      <input type="password" name="passwords[old]" placeholder="Old Password">
+                      <input type="password" name="passwords[new]" placeholder="New Password">
                       <input type="submit" name="submit" value="Change Password!">
                     </fieldset>
                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Change Password</button> -->
