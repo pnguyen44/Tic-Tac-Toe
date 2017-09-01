@@ -44,7 +44,10 @@ const playGame = function (element) {
         console.log('Winner ' + player)
         // clickCount = 0
         $('button').html('Winner is ' + player + '! Play again.')
-        return true
+        // $('button').off('click', '**')
+        updateScore(player)
+        store.status = 'inactive'
+        // return true
       } else if (clickCount === 9) {
         console.log('There is a tie.')
         $('button').html('There is a tie, play again')
@@ -52,6 +55,19 @@ const playGame = function (element) {
       }
     }
   }
+}
+
+const updateScore = function (player) {
+  let element = '#player_' + player + '_score'
+  // console.log($(element))
+  let score = parseInt($(element).html())
+  if (score === 'NAN') {
+    score = 0
+  }
+  // score += 1
+  console.log(score)
+  $(element).html((score + 1))
+  // console.log($('element').html(score + 1))
 }
 
 const clearBoard = function () {
@@ -89,7 +105,7 @@ $(() => {
   $('button').on('click', resetGame)
 
   $('.box').on('click', function () {
-    // event.preventDefault()
+    // console.log(updateScore('x'))
     if (store.status === 'active') {
       playGame($(this))
     }
