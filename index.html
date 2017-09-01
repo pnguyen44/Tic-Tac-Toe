@@ -14,10 +14,9 @@
     <body class="container-fluid">
     <div class="header">
         <h1>Tic Tac Toe</h1>
-
       <!-- Button trigger modal -->
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Acoount</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Account</button>
   </div>
 
 
@@ -33,15 +32,17 @@
               </button>
             </div>
             <div class="modal-body">
-                <form id="sign-up">
-                    <fieldset>
-                      <legend>Sign up</legend>
-                      <input type="text" name="credentials[email]" placeholder="Email">
-                      <input type="text" name="credentials[password]" placeholder="Password">
-                      <input type="text" name="credentials[password_confirmation]" placeholder="Password Confirmation">
-                      <input type="submit" name="submit" value="Sign up!">
-                    </fieldset>
-                  </form>
+
+              <form id="sign-up">
+                  <fieldset>
+                    <legend>Sign up</legend>
+                    <input type="text" name="credentials[email]" placeholder="Email">
+                    <input type="text" name="credentials[password]" placeholder="Password">
+                    <input type="text" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+                    <input type="submit" name="submit" value="Sign up!">
+                  </fieldset>
+                  <!-- <button type="button" class="btn btn-default">Sign Up</button> -->
+                </form>
 
                   <form id="sign-in">
                       <fieldset>
@@ -50,27 +51,31 @@
                         <input type="text" name="credentials[password]" placeholder="Password">
                         <input type="submit" name="submit" value="Sign In!">
                       </fieldset>
+                      <!-- <button type="submit" class="btn btn-default">Sign In</button> -->
                   </form>
 
                   <form id="change-password">
                     <fieldset>
-                      <legend>Sign Change Password</legend>
+                      <legend>Change Password</legend>
                       <input type="text" name="passwords[old]" placeholder="Old Password">
                       <input type="text" name="passwords[new]" placeholder="New Password">
                       <input type="submit" name="submit" value="Change Password!">
                     </fieldset>
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Change Password</button> -->
                 </form>
                 <form id="view-history">
                     <fieldset>
                         <legend>View History</legend>
                         <input type="submit" class="submit" value="View History">
                     </fieldset>
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">View History</button> -->
                 </form>
             </div>
             <!-- Modal Footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Sign Out</button>
-                <button type="button" class="btn btn-close">Close</button>
+                <p id='message'></p>
+                <button type="button" class="btn btn-primary" id="btn-sign-out">Sign Out</button>
+                <!-- <button type="button" class="btn btn-close">Close</button> -->
             </div>
           </div>
         </div>
