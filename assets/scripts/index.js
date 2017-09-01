@@ -3,6 +3,8 @@
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 const store = require('./store')
+const authEvents = require('./auth/events')
+const game = require('./game')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -14,100 +16,16 @@ $(() => {
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
-let board = store.cells
-
-const isEmpty = function (element) {
-  const len = element.html().length
-  // console.log('length ', len)
-  if (len <= 0) {
-    return true
-  } else {
-    return false
-  }
-}
-let clickCount = store.clickCount
-
-// add response if empty and add to board
-const playGame = function (element) {
-  const player = clickCount % 2 === 0 ? 'x' : 'o'
-  // clickCount = countClicks()
-  const empty = isEmpty(element)
-  if (store.status === 'active') {
-    if (empty) {
-      clickCount += 1
-      console.log('click count', clickCount)
-      board[element.attr('id')] = player
-      element.html(player)
-      const isWinner = checkForWinner(board, player)
-      console.log('isWinner ' + isWinner)
-      if (isWinner) {
-        console.log('Winner ' + player)
-        // clickCount = 0
-        $('.btn-play').html('Winner is ' + player + '! Play again.')
-        // $('.btn-play').off('click', '**')
-        updateScore(player)
-        store.status = 'inactive'
-        // return true
-      } else if (clickCount === 9) {
-        console.log('There is a tie.')
-        $('.btn-play').html('There is a tie, play again')
-        return false
-      }
-    }
-  }
-}
-
-const updateScore = function (player) {
-  let element = '#player_' + player + '_score'
-  // console.log($(element))
-  let score = parseInt($(element).html())
-  if (score === 'NAN') {
-    score = 0
-  }
-  // score += 1
-  console.log(score)
-  $(element).html((score + 1))
-  // console.log($('element').html(score + 1))
-}
-
-const clearBoard = function () {
-  // if (clickCount === 10) {
-  $('.box').text('')
-  // }
-}
-
-const checkForWinner = function (board, player) {
-  const val = player
-  // const winner = val
-  if (((board[0] === val) && (board[1] === val) && (board[2] === val)) ||
-    ((board[3] === val) && (board[4] === val) && (board[5] === val)) ||
-    ((board[6] === val) && (board[7] === val) && (board[8] === val)) ||
-    ((board[0] === val) && (board[3] === val) && (board[6] === val)) ||
-    ((board[1] === val) && (board[4] === val) && (board[7] === val)) ||
-    ((board[2] === val) && (board[5] === val) && (board[8] === val)) ||
-    ((board[0] === val) && (board[4] === val) && (board[8] === val)) ||
-    ((board[2] === val) && (board[4] === val) && (board[6] === val))) {
-    return true
-  } else {
-    return false
-  }
-}
-
-const resetGame = function () {
-  clickCount = 0
-  store.status = 'active'
-  clearBoard()
-  board = ['', '', '', '', '', '', '', '', '']
-  $(this).html('Play New Game')
-}
-
 $(() => {
-  $('.btn-play').on('click', resetGame)
+  $('.btn-play').on('click', game.resetGame)
 
   $('.box').on('click', function () {
     // console.log(updateScore('x'))
     if (store.status === 'active') {
-      playGame($(this))
+      game.playGame($(this))
     }
   })
+
+  // $('#sign-up').on('submit', authEvents.onSignUp)
+  authEvents.addHandlers()
 })
