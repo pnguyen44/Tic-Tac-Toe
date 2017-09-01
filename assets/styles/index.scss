@@ -10,6 +10,10 @@ body {
   color: $font-color;
 }
 
+.score {
+  padding-top: 50px;
+  text-align: center;
+}
 .box {
   border: 1px solid $white;
   padding: 40px;
@@ -33,11 +37,13 @@ button {
 }
 .players {
   float: left;
+  text-align: center;
   height: 100px;
   width: 200px;
   margin-right: 1000px;
 }
 .player {
+  padding-top: 10px;
   border: 1px solid $white;
   width: 100px;
   height: 100px;
