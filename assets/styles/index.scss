@@ -17,22 +17,31 @@ body {
 .box {
   border: 1px solid $white;
   padding: 40px;
-  height: 80px;
-  width: 70px;
+  height: 100px;
+  width: 100px;
   box-shadow: 0px 0px 15px;
   }
 .container {
   float: left;
   // margin-left: 500px;
-  margin-top: -190px;
-  margin-left: 500px;
-  padding-top: 50px;
+  margin-top: -189px;
+  margin-left: 350px;
+  margin-right: 0px;
+  padding-top: 90px;
+  width: auto;
 }
-button {
+
+.btn-primary {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  clear: right;
+}
+.btn-play {
   width: 200px;
   height: 40px;
   // margin-bottom: 0px;
   color: black;
+  margin-right: -40px;
   float: left;
 }
 .players {
@@ -41,6 +50,7 @@ button {
   height: 100px;
   width: 200px;
   margin-right: 1000px;
+  margin-top: 50px;
 }
 .player {
   padding-top: 10px;
@@ -50,6 +60,14 @@ button {
   float: left;
   // clear: right:
 }
+.header {
+margin: 0px;
+}
 h1{
-  // text-align: center;
+  text-align: center;
+  margin-bottom: -40px;
+  // margin-left: -100px;
+  padding-bottom: 10px;
+  // margin-top: -10px;
+  // float: left;
 }
