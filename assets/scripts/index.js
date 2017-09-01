@@ -43,14 +43,14 @@ const playGame = function (element) {
       if (isWinner) {
         console.log('Winner ' + player)
         // clickCount = 0
-        $('button').html('Winner is ' + player + '! Play again.')
-        // $('button').off('click', '**')
+        $('.btn-play').html('Winner is ' + player + '! Play again.')
+        // $('.btn-play').off('click', '**')
         updateScore(player)
         store.status = 'inactive'
         // return true
       } else if (clickCount === 9) {
         console.log('There is a tie.')
-        $('button').html('There is a tie, play again')
+        $('.btn-play').html('There is a tie, play again')
         return false
       }
     }
@@ -102,7 +102,7 @@ const resetGame = function () {
 }
 
 $(() => {
-  $('button').on('click', resetGame)
+  $('.btn-play').on('click', resetGame)
 
   $('.box').on('click', function () {
     // console.log(updateScore('x'))
