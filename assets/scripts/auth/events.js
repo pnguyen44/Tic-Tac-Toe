@@ -39,6 +39,9 @@ const onSignOut = function (event) {
 }
 
 const addHandlers = function () {
+  $('#account').on('click', function () {
+    $('message').text('')
+  })
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
