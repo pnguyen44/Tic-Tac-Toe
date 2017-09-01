@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # sh scripts/sign-up-json.sh
-
+#
 # API="${API_ORIGIN:-http://httpbin.org}"
 # URL_PATH="/post"
-API="${API_ORIGIN:-https://ga-library-api.herokuapp.com}"
+API="${API_ORIGIN:-http://tic-tac-toe.wdibos.com}"
 URL_PATH="/sign-up"
 
 curl "${API}${URL_PATH}" \
@@ -18,5 +18,5 @@ curl "${API}${URL_PATH}" \
       "password_confirmation": "'"${PASSWORD_CONFIRMATION}"'"
     }
 }'
-# EMAIL='fin' PASSWORD='FIN' PASSWORD_CONFIRMATION='FIN'
+
 echo
