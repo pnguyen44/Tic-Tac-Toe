@@ -1,7 +1,10 @@
-const gameApi = require('./games/api')
+const gamesApi = require('./games/api')
+const gamesUi = require('./games/ui')
+const gamesEvents = require('./games/events')
 const store = require('./store')
 let cells = ['', '', '', '', '', '', '', '', '']
-store.over = true
+// store.over = false
+
 const isEmpty = function (element) {
   const len = element.html().length
   // console.log('length ', len)
@@ -15,15 +18,23 @@ let clickCount = store.clickCount
 
 // add response if empty and add to cells
 const playGame = function (element) {
+  console.log('element', element)
   const player = clickCount % 2 === 0 ? 'x' : 'o'
   // clickCount = countClicks()
+  store.value = player
   const empty = isEmpty(element)
-  if (store.over === 'active') {
+  if (store.over === false) {
     if (empty) {
       clickCount += 1
       console.log('click count', clickCount)
       cells[element.attr('id')] = player
       element.html(player)
+      console.log(element.attr('id'))
+      gamesEvents.onUpdateGame(element.attr('id'), player, store.over)
+      // .then(gamesUi.onUpdateSuccess)
+      // .catch(gamesUi.onError)
+      console.log(gamesApi.update(element.attr('id'), player, false))
+
       const isWinner = checkForWinner(cells, player)
       console.log('isWinner ' + isWinner)
       if (isWinner) {
@@ -32,11 +43,12 @@ const playGame = function (element) {
         $('.btn-play').html('Winner is ' + player + '! Play again.')
         // $('.btn-play').off('click', '**')
         updateScore(player)
-        store.over = false
+        store.over = true
         // return true
       } else if (clickCount === 9) {
         console.log('There is a tie.')
         $('.btn-play').html('There is a tie, play again')
+        store.over = true
         return false
       }
     }
@@ -75,10 +87,11 @@ const checkForWinner = function (cells, player) {
 
 const resetGame = function () {
   clickCount = 0
-  store.over = 'active'
+  store.over = false
   $('.box').text('')
   cells = ['', '', '', '', '', '', '', '', '']
   $(this).html('Play New Game')
+  console.log('store.over', store.over)
   // store.game = gameApi.create
 }
 
