@@ -5,6 +5,7 @@ const config = require('./config')
 const store = require('./store')
 const authEvents = require('./auth/events')
 const game = require('./game')
+const gameEvents = require('./games/events')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -21,11 +22,10 @@ $(() => {
 
   $('.box').on('click', function () {
     // console.log(updateScore('x'))
-    if (store.status === 'active') {
+    if (store.over === false) {
       game.playGame($(this))
     }
   })
-
-  // $('#sign-up').on('submit', authEvents.onSignUp)
   authEvents.addHandlers()
+  gameEvents.addHandlers()
 })
