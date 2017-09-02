@@ -12,10 +12,10 @@ const signUpFailure = function (error) {
   $('#message').text('Error on sign up')
 }
 const signInSuccess = function (data) {
-  console.log(data)
   console.log('Successfully Signed In')
   $('#message').text('Successfully signed in')
   store.user = data.user
+  console.log(store.user)
 }
 const signInFailure = function (error) {
   console.error(error)
