@@ -24,7 +24,7 @@ body {
 .container {
   float: left;
   // margin-left: 500px;
-  margin-top: -189px;
+  margin-top: -250px;
   margin-left: 350px;
   margin-right: 0px;
   padding-top: 90px;
@@ -34,7 +34,8 @@ body {
 .btn-primary {
   margin-top: 0px;
   margin-bottom: 10px;
-  clear: right;
+  // clear: right;
+  float: right;
 }
 .btn-play {
   width: 200px;
@@ -58,7 +59,7 @@ body {
   width: 100px;
   height: 100px;
   float: left;
-  // clear: right:
+  clear: right;
 }
 .header {
 margin: 0px;
@@ -69,10 +70,32 @@ h1{
   // margin-left: -100px;
   padding-bottom: 10px;
   // margin-top: -10px;
-  // float: left;
+  float: left;
+  // clear: right;
 }
-#message {
+
+.score-board {
+float: left;
+  margin-top: 80px;
+  margin-left: -180px;
+  // padding-bottom: -1000px;
+  // margin-bottom: 8000px;
+  // clear: both;
+}
+#message-form {
   float:left;
   font-size: 14px;
   color: red;
+}
+.container-stats {
+  float: right;
+  margin-top: -230px;
+  margin-right: 80px;
+  text-align: center;
+}
+.player_stats {
+margin-bottom: 30px;
+}
+.stats {
+text-align: left;
 }

@@ -21,11 +21,14 @@ $(() => {
   $('.btn-play').on('click', game.resetGame)
 
   $('.box').on('click', function () {
-    // console.log(updateScore('x'))
+    // console.log(updat  eScore('x'))
     if (store.over === false) {
       game.playGame($(this))
     }
   })
   authEvents.addHandlers()
   gameEvents.addHandlers()
+  $('#acct').on('click', function () {
+    $('#message-form').text('')
+  })
 })
