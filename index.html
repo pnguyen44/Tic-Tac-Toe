@@ -6,13 +6,18 @@
 
       <!-- Do not add `link` tags unless you know what you are doing -->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Fredericka+the+Great" rel="stylesheet">
       <!-- Do not add `script` tags unless you know what you are doing -->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
     <div class="header">
+      <!-- <img alt="chalkboard" title = "chalkboard" src = "https://i.imgur.com/6PNntdp.jpg"> -->
         <h1>Tic Tac Toe</h1>
+        <div class="header-message">
+          <p>Log in to play --></p>
+        </div>
       <!-- Button trigger modal -->
       <!-- Button trigger modal -->
       <button type="button" id="btn-account" class="btn btn-primary" data-toggle="modal" data-target="#account">Account</button>
@@ -31,7 +36,7 @@
             </div>
             <div class="modal-body">
 
-              <form id="sign-up">
+              <form id="sign-up" class="hide-signed-in">
                   <fieldset>
                     <legend>Sign up</legend>
                     <input type="text" name="credentials[email]" placeholder="Email">
@@ -61,19 +66,19 @@
                       <input type="submit" class="button" name="submit" value="Change Password!">
                     </fieldset>
                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Change Password</button> -->
-                </form>
+                <!-- </form>
                 <form id="view-history">
                     <fieldset>
                         <legend>View History</legend>
                         <input type="submit" class="button" class="submit" value="View History">
                     </fieldset>
-                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">View History</button> -->
-                </form>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">View History</button>
+                </form> -->
             </div>
             <!-- Modal Footer -->
             <div class="modal-footer">
 
-                <button type="button" class="btn btn-primary" id="btn-sign-out">Sign Out</button>
+                <button type="button" class="btn btn-primay" id="btn-sign-out">Sign Out</button>
                 <!-- <button type="button" class="btn btn-close">Close</button> -->
             </div>
           </div>
@@ -81,6 +86,7 @@
       </div>
 
       <div class="score-board">
+    <div class="score-board-title">
       <h2>Score Board</h2>
     </div>
 
@@ -92,9 +98,10 @@
             <div class="score" id="player_o_score">0</div>
           </div>
       </div>
-
-      <button type="button" class="btn btn-play">Play New Game</button>
-
+    </div>
+    <div class="game-message">
+    <h3></h3>
+  </div>
       <div class="container">
         <!-- <div class="col"> -->
 
@@ -120,13 +127,15 @@
     </div>
 
       <!-- <div class="stats"> -->
-        <span class='stats' id="games-played">-</span>
+        <span class='stats' id="games-played">--</span>
         <h4>Games Played</h4>
-        <span class="stats"id="games-won">-</span>
+        <span class="stats"id="games-won">--</span>
         <h4>Games Won</h4>
       </div>
+
+      <button type="button" class="btn btn-play">Clear Game</button>
     <!-- </div> -->
-    <button type="button" class="test">TEST</button>
+    <!-- <button type="button" class="test">TEST</button> -->
 
       <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
       eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
