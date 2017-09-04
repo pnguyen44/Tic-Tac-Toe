@@ -92,12 +92,52 @@ const resetGame = function () {
   cells = ['', '', '', '', '', '', '', '', '']
   $(this).html('Play New Game')
   console.log('store.over', store.over)
-  // store.game = gameApi.create
 }
+// const games = [{"id":5526,"cells":["x","o","","","x","o","","","x"],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5525,"cells":["x","","","x","o","","x","o",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5528,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5529,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null}]
+
+// const getLastGame = function () {
+//   gamesEvents.getGames()
+//   console.log('store.game', store.games)
+//   const totalGames = store.games.length
+//   console.log('total games', totalGames)
+//   console.log('store.game = ', store.games)
+//   gamesEvents.getGame(store.games[totalGames - 1].id)
+//   $('#games-played').html(totalGames)
+// }
+
+const getPlayerStats = function () {
+  // gamesEvents.etGames()
+  console.log(store.games)
+  let totalGames = store.games.length
+  const gamesWonArr = store.games.filter(function (obj) {
+    return checkForWinner(obj.cells, 'x')
+  })
+  const numGamesWon = gamesWonArr.length
+  $('#games-won').html(numGamesWon)
+
+  totalGames = store.games.length
+  gamesEvents.getGame(store.games[totalGames - 1].id)
+  $('#games-played').html(totalGames)
+}
+
+$('.test').on('click', getPlayerStats)
+// const games = [{"id":5526,"cells":["x","o","","","x","o","","","x"],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5525,"cells":["x","","","x","o","","x","o",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5528,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5529,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null}]
+// // console.log(Object.values(games))
+// const gamesWonArr = games.filter(function (obj) {
+// return checkForWinner(obj.cells, 'x')
+// })
+// const numGamesWon = gamesWonArr.length
+
+// console.log(getPlayerStats())
+
+// var obj = { foo: 'bar', baz: 42 };
+// console.log(Object.values(obj))
+// getLastGame()
 
 module.exports = {
   isEmpty,
   playGame,
   updateScore,
+  getPlayerStats,
   resetGame
 }
