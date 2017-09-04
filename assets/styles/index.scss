@@ -4,10 +4,20 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 $background-color: #4e4e4e;
 $font-color: #dfdfdf;
 $white: #fff;
+$font-family-Amatic: 'Fredericka the Great';
+$grey: 	rgba(115, 115, 115, 1);
+$blue-violet: #7883B9;
+
+h1,h3, h2, h4, p, span {
+  font-family: $font-family-Amatic,cursive;
+}
 
 body {
   background-color: $background-color;
   color: $font-color;
+  background-image: url("https://i.imgur.com/wSHE3PI.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .stats {
   text-align: center;
@@ -15,19 +25,49 @@ body {
 .stats h4{
   text-align: center;
 }
+h4 {
+  font-size: 30px;
+}
+h2 {
+  font-size: 40px;
+  color: yellow;
+}
+.game-message {
 
+  font-size: 10;
+  color: yellow;
+  text-align: center;
+  font-family: $font-family-Amatic,cursive;
+}
+span {
+  font-size: 30px;
+}
 .score {
   padding-top: 50px;
   text-align: center;
 }
-
+.header-message {
+  margin-top: 20px;
+font-size: 25px;
+float: right;
+margin-right: 200px;
+color: yellow;
+}
 .box {
-  border: 1px solid $white;
-  padding: 40px;
-  height: 100px;
+  border: 3px solid white;
+  // border-bottom: 5px solid $white;
+  // border-right: 5px solid $white;
+  padding-botom: -105px;
+    height: 100px;
+  text-align: center;
   width: 100px;
   box-shadow: 0px 0px 15px;
+  font-size: 80px;
+  font-family: $font-family-Amatic, cursive;
   }
+// #2 {
+//   border-bottom: : 5px solid $white;
+// }
 .button {
   color: black;
 }
@@ -35,59 +75,95 @@ body {
   float: left;
   // margin-left: 500px;
   margin-top: -250px;
-  margin-left: 350px;
+  margin-left: 490px;
   margin-right: 0px;
-  padding-top: 90px;
+  padding-top: 120px;
   width: auto;
 }
 
+.game-message {
+  margin-top: 40px;
+  float: left;
+  margin-left: -430px;
+  text-align: center;
+  font-size: 30px;
+  // padding-bottom: -50px;
+  // border: 5px solid $white;
+}
 .btn-primary {
-  margin-top: 0px;
+  margin-top: 20px;
   margin-bottom: 10px;
+  width: 150px;
+  font-size: 20px;
+  padding: 0px;
+  background-color: royalBlue;
+  font-family: $font-family-Amatic,cursive;
   // clear: right;
+  // color: white;
   float: right;
+  margin-right: -400px;
 }
 .btn-play {
-  width: 200px;
-  height: 40px;
+  width: 300px;
+  height: 60px;
+  font-size: 30px;
+  color: white;
+  font-family: $font-family-Amatic,cursive;
   // margin-bottom: 0px;
-  color: black;
-  margin-right: -40px;
+  // color: black;
+  margin-left: -300px;
   float: left;
+  margin-top: 190px;
+  background-color: $grey
+}
+.score-board-title {
+  margin-left: -17px;
 }
 .players {
   float: left;
   text-align: center;
   height: 100px;
   width: 200px;
-  margin-right: 1000px;
+  margin-right: 700px;
   margin-top: 50px;
+  font-family: $font-family-Amatic,cursive;
 }
 .player {
-  padding-top: 10px;
-  border: 1px solid $white;
+  // padding-top: 5px;
+  // border: 1px solid $white;
   width: 100px;
   height: 100px;
   float: left;
   clear: right;
+  margin-top: -50px;
+  font-size: 30px;
 }
 .header {
 margin: 0px;
 }
 h1{
+  color: orange;
+  font-size: 50px;
   text-align: center;
   margin-bottom: -40px;
   // margin-left: -100px;
   padding-bottom: 10px;
   // margin-top: -10px;
   float: left;
+  font-family: $font-family-Amatic, cursive;
   // clear: right;
 }
-
+modal {
+font-size: 40px;
+width: 30px;
+}
 .score-board {
 float: left;
-  margin-top: 80px;
-  margin-left: -180px;
+  margin-top: 90px;
+  margin-bottom: -100px;
+  margin-left: 90px;
+  text-align: left;
+
   // padding-bottom: -1000px;
   // margin-bottom: 8000px;
   // clear: both;
@@ -99,13 +175,31 @@ float: left;
 }
 .container-stats {
   float: right;
-  margin-top: -230px;
   margin-right: 80px;
   text-align: center;
+  margin-top: -120px;
 }
-.player_stats {
-margin-bottom: 30px;
-}
+
 .stats {
-text-align: left;
+  text-align: left;
+}
+
+#btn-sign-out {
+  background: royalBlue;
+  color: white
+}
+@media only screen and (max-width: 500px) {
+  body {
+    width: auto;
+  }
+  h2, h3, h4, span, .game-message, .header-message{
+    font-size: 15px;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  .box {
+    width: 30px;
+    height: 30px;
+  }
 }
