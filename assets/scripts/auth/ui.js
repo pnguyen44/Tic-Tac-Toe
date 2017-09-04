@@ -6,13 +6,16 @@ const authEvents = require('./events')
 const gamesEvents = require('../games/events')
 const game = require('../game')
 const signUpSuccess = function (data) {
-  console.log('data', data)
+  console.log('onsign up sucess data = ', data)
   console.log('store.user', data.user)
   console.log('Successfully Signed Up')
   store.user = data.user
+  store.token = data.user.token
+  console.log('on signup token = ', store.token)
   // console.log('data.user', data.user)
-  // api.signIn(data)
-  // api.signIn(store.user)
+  // api.signIn(store.credential)
+  //   .then(function () { console.log('sign-in after sign-up') })
+  //   .catch(function () { console.log('error on signin after signup') })
   clearForm()
   // api.signIn(data.user.id)
 }
@@ -26,6 +29,7 @@ const signInSuccess = function (data) {
   console.log('Successfully Signed In')
   store.user = data.user
   store.token = data.user.token
+  console.log('ons sign in store.token=', store.token)
   store.isSignedIn = true
   $('#change-password').show()
   $('#btn-sign-out').show()
@@ -33,7 +37,8 @@ const signInSuccess = function (data) {
   $('#sign-up').hide()
   clearForm()
   gamesEvents.getGames()
-  game.getPlayerStats()
+  // console.log('getGames results =', store.games)
+  // game.getPlayerStats()
 }
 const signInFailure = function (error) {
   console.error(error)

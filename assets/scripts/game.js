@@ -2,6 +2,7 @@ const gamesApi = require('./games/api')
 const gamesUi = require('./games/ui')
 const gamesEvents = require('./games/events')
 const store = require('./store')
+
 let cells = ['', '', '', '', '', '', '', '', '']
 // store.over = false
 
@@ -30,6 +31,8 @@ const playGame = function (element) {
       cells[element.attr('id')] = player
       element.html(player)
       console.log(element.attr('id'))
+
+      gamesEvents.test()
       gamesEvents.onUpdateGame(element.attr('id'), player, store.over)
       // .then(gamesUi.onUpdateSuccess)
       // .catch(gamesUi.onError)
@@ -101,26 +104,31 @@ const resetGame = function () {
 //   const totalGames = store.games.length
 //   console.log('total games', totalGames)
 //   console.log('store.game = ', store.games)
-//   gamesEvents.getGame(store.games[totalGames - 1].id)
+//   gamesEvents.getOneGame(store.games[totalGames - 1].id)
 //   $('#games-played').html(totalGames)
 // }
 
 const getPlayerStats = function () {
-  // gamesEvents.etGames()
+  // gamesEvents.getGames()
+  console.log('store.games results = ', store.game)
   console.log(store.games)
-  let totalGames = store.games.length
   const gamesWonArr = store.games.filter(function (obj) {
     return checkForWinner(obj.cells, 'x')
   })
   const numGamesWon = gamesWonArr.length
   $('#games-won').html(numGamesWon)
 
-  totalGames = store.games.length
-  gamesEvents.getGame(store.games[totalGames - 1].id)
+  const totalGames = store.games.length
+  // gamesEvents.getOneGame(store.games[totalGames - 1].id)
   $('#games-played').html(totalGames)
 }
+const getLastGame = function () {
+  console.log('store.games =', store.games)
+  console.log('store.games[store.games.length - 1].id = ', store.games[store.games.length - 1].id)
+  // gamesEvents.getOneGame()
+}
 
-$('.test').on('click', getPlayerStats)
+// $('.test').on('click', gamesEvents.onUpdateGame())
 // const games = [{"id":5526,"cells":["x","o","","","x","o","","","x"],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5525,"cells":["x","","","x","o","","x","o",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5528,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5529,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null}]
 // // console.log(Object.values(games))
 // const gamesWonArr = games.filter(function (obj) {
@@ -139,5 +147,6 @@ module.exports = {
   playGame,
   updateScore,
   getPlayerStats,
-  resetGame
+  resetGame,
+  getLastGame
 }

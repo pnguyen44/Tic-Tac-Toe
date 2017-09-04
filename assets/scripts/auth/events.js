@@ -7,8 +7,10 @@ const onSignUp = function (event) {
   event.preventDefault()
   console.log('event.target', event.target)
   const data = getFormFields(this)
-  console.log('data', data)
+  console.log('onSignUp data =', data)
   clearMessage()
+
+  // store.credential = data
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -17,7 +19,7 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data)
+  console.log('onSign-in data ', data)
   clearMessage()
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -53,7 +55,6 @@ const addHandlers = function () {
   $('#change-password').on('submit', onChangePassword)
   $('#btn-sign-out').on('click', onSignOut)
 }
-
 
 module.exports = {
   addHandlers,

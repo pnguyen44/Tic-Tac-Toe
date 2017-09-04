@@ -18,9 +18,9 @@ const getGames = function () {
     .then(gamesUi.getGamesSuccess)
     .catch(gamesUi.onError)
 }
-const getGame = function (id) {
+const getOneGame = function (id) {
   gamesApi.show(id)
-    .then(gamesUi.getGameSuccess)
+    .then(gamesUi.getOneGameSuccess)
     .catch(gamesUi.onError)
 }
 
@@ -34,13 +34,18 @@ const onUpdateGame = function (i, value, over) {
 
 const addHandlers = function () {
   $('.btn-play').on('click', onCreateGame)
-  $('#view-history').on('click', getGames)
+  $('#view-history').on('click', getOneGame)
+}
+
+const test = () => {
+  console.log('test----')
 }
 
 module.exports = {
   onCreateGame,
   onUpdateGame,
+  getOneGame,
   getGames,
-  getGame,
-  addHandlers
+  addHandlers,
+  test
 }
