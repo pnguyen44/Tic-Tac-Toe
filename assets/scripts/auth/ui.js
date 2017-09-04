@@ -5,6 +5,7 @@ const getFormFields = require('../../../lib/get-form-fields')
 const authEvents = require('./events')
 const gamesEvents = require('../games/events')
 const game = require('../game')
+
 const signUpSuccess = function (data) {
   console.log('onsign up sucess data = ', data)
   console.log('store.user', data.user)
@@ -17,6 +18,9 @@ const signUpSuccess = function (data) {
   //   .then(function () { console.log('sign-in after sign-up') })
   //   .catch(function () { console.log('error on signin after signup') })
   clearForm()
+  $('#sign-out').show()
+  $('#change-password').show()
+  store.isSignedIn = true
   // api.signIn(data.user.id)
 }
 const signUpFailure = function (error) {
@@ -35,10 +39,17 @@ const signInSuccess = function (data) {
   $('#btn-sign-out').show()
   $('#view-history').show()
   $('#sign-up').hide()
+  $('#sign-in').hide()
   clearForm()
+  $('#modal').modal('hide')
   gamesEvents.getGames()
+  gamesEvents.onCreateGame()
+  // game.getLastGame()
+  game.resetGame()
+  console.log('signInSuccess store.isSignedIn =', store.isSignedIn)
   // console.log('getGames results =', store.games)
-  // game.getPlayerStats()
+  $('#sign-out').show()
+  $('#change-password').show()
 }
 const signInFailure = function (error) {
   console.error(error)
@@ -50,6 +61,7 @@ const changePasswordSuccess = (data) => {
   console.log(data)
   console.log('Successfully changed password')
   clearForm()
+    $('#sign-out').show()
 }
 
 const changePasswordFailure = (error) => {
@@ -61,12 +73,16 @@ const changePasswordFailure = (error) => {
 const signOutSuccess = function (data) {
   console.log('successfully sign out')
   store.user = null
+  game.clearBoard()
+  game.resetAll()
+  store.isSignedIn = false
 }
 
 const signOutFailure = function (error) {
   console.log(error)
   console.log('error on sign out')
   $('#message-form').text('Error on sign out')
+  $('#sign-out').hide()
 }
 const clearForm = function () {
   $('form').trigger('reset')
