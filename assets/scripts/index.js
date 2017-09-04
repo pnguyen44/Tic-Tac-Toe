@@ -41,11 +41,8 @@ $(() => {
     $('#message-form').text('')
     console.log('is sign in = ', store.isSignedIn)
     if (store.isSignedIn === true) {
-      // $('form').css(
-      //
-      // )
       $('#change-password').show()
-      $('#view-history').show()
+      $('#view-history').hide()
       $('#btn-sign-out').show()
       $('#sign-up').hide()
       $('#sign-in').hide()
