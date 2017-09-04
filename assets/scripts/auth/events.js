@@ -5,9 +5,10 @@ const ui = require('./ui')
 
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log(event)
+  console.log('event.target', event.target)
   const data = getFormFields(this)
-  console.log(data)
+  console.log('data', data)
+  clearMessage()
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -17,6 +18,7 @@ const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   console.log(data)
+  clearMessage()
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -26,6 +28,7 @@ const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   console.log(data)
+  clearMessage()
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
@@ -37,6 +40,9 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
+const clearMessage = function () {
+  $('#message-form').text('')
+}
 
 const addHandlers = function () {
   $('#account').on('click', function () {
@@ -47,6 +53,7 @@ const addHandlers = function () {
   $('#change-password').on('submit', onChangePassword)
   $('#btn-sign-out').on('click', onSignOut)
 }
+
 
 module.exports = {
   addHandlers,
