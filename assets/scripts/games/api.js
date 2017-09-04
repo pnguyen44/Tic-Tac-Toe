@@ -48,13 +48,10 @@ const update = function (i, value, over) {
     }
   })
 }
-const test = () => {
-  console.log('test----')
-}
+
 module.exports = {
   create,
   update,
   index,
-  show,
-  test
+  show
 }
