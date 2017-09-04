@@ -1,9 +1,8 @@
 API="${API_ORIGIN:-http://tic-tac-toe.wdibos.com}"
 URL_PATH="/games"
 
-# TOKEN ="BAhJIiVmNGFhYzlhYWRkZTk0NDJmMjI5ODI3OGUxNWZlZDg1NgY6BkVG--b19109063f0bde5cb12e6a67a5d9bad9282760d8"
+TOKEN="BAhJIiVkNGM4ZTI3NzBhY2Y0ZjYyNTZiNWFlY2M0NmE0ZWZjNwY6BkVG--33f13e5113ec7e8c63f32255d5c3fa9c555a9256"
 
-# works
 
 curl "${API}${URL_PATH}" \
   --include \
