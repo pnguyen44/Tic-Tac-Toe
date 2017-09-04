@@ -16,7 +16,7 @@
         <h1>Tic Tac Toe</h1>
       <!-- Button trigger modal -->
       <!-- Button trigger modal -->
-      <button type="button" id="acct" class="btn btn-primary" data-toggle="modal" data-target="#account">Account</button>
+      <button type="button" id="btn-account" class="btn btn-primary" data-toggle="modal" data-target="#account">Account</button>
   </div>
 
       <!-- Modal -->
@@ -38,11 +38,9 @@
                     <input type="text" name="credentials[email]" placeholder="Email">
                     <input type="password" name="credentials[password]" placeholder="Password">
                     <input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation">
-                    <!-- <input type="password" id="password" name="credentials[password]" class="form-control" data-toggle="password"> -->
-
-                    <input type="submit" name="submit" value="Sign up!">
+                    <input type="submit" class="button" name="submit" value="Sign up!">
                   </fieldset>
-                  <!-- <button type="button" class="btn btn-default">Sign Up</button> -->
+                  <!-- <button type="button" class="btn btn-primary">Sign Up</button> -->
                 </form>
                 <!-- class="password" data-toggle="password" -->
 
@@ -51,7 +49,7 @@
                         <legend>Sign In</legend>
                         <input type="text" name="credentials[email]" placeholder="Email">
                         <input type="password" name="credentials[password]" placeholder="Password">
-                        <input type="submit" name="submit" value="Sign In!">
+                        <input type="submit" class="button" name="submit" value="Sign In!">
                       </fieldset>
                       <!-- <button type="submit" class="btn btn-default">Sign In</button> -->
                   </form>
@@ -61,14 +59,14 @@
                       <legend>Change Password</legend>
                       <input type="password" name="passwords[old]" placeholder="Old Password">
                       <input type="password" name="passwords[new]" placeholder="New Password">
-                      <input type="submit" name="submit" value="Change Password!">
+                      <input type="submit" class="button" name="submit" value="Change Password!">
                     </fieldset>
                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Change Password</button> -->
                 </form>
                 <form id="view-history">
                     <fieldset>
                         <legend>View History</legend>
-                        <input type="submit" class="submit" value="View History">
+                        <input type="submit" class="button" class="submit" value="View History">
                     </fieldset>
                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">View History</button> -->
                 </form>
@@ -122,12 +120,14 @@
       <h2>Player Stats</h2>
     </div>
 
-      <div class="stats">
-        <h4>Total Game Played:</h4>
-        <h4>Total Games Won:</h4>
+      <!-- <div class="stats"> -->
+        <span class='stats' id="games-played">-</span>
+        <h4>Games Played</h4>
+        <span class="stats"id="games-won">-</span>
+        <h4>Games Won</h4>
       </div>
-    </div>
-
+    <!-- </div> -->
+    <button type="button" class="test">TEST</button>
 
       <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
       eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
