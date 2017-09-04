@@ -13,12 +13,23 @@ h1,h3, h2, h4, p, span {
 }
 
 body {
-  background-color: $background-color;
+  // background-color: $background-color;
   color: $font-color;
-  background-image: url("https://i.imgur.com/wSHE3PI.jpg");
+  background-image: url("https://i.imgur.com/YYE9l8E.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+img {
+    border-size: cover;
+}
+// body {
+//   background-color: $background-color;
+//   color: $font-color;
+//   background-image: "assets/styles/board.jpeg";
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
 .stats {
   text-align: center;
 }
@@ -30,7 +41,7 @@ h4 {
 }
 h2 {
   font-size: 40px;
-  color: yellow;
+  color: lightBlue;
 }
 .game-message {
 
@@ -61,7 +72,7 @@ color: yellow;
     height: 100px;
   text-align: center;
   width: 100px;
-  box-shadow: 0px 0px 15px;
+  // box-shadow: 0px 0px 15px;
   font-size: 80px;
   font-family: $font-family-Amatic, cursive;
   }
@@ -93,7 +104,8 @@ color: yellow;
 .btn-primary {
   margin-top: 20px;
   margin-bottom: 10px;
-  width: 150px;
+  width: 130px;
+  height: 40px;
   font-size: 20px;
   padding: 0px;
   background-color: royalBlue;
@@ -142,7 +154,7 @@ color: yellow;
 margin: 0px;
 }
 h1{
-  color: orange;
+  color: white;
   font-size: 50px;
   text-align: center;
   margin-bottom: -40px;
