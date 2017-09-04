@@ -19,8 +19,7 @@ $(() => {
 
 $(() => {
   store.isSignedIn = false
-  $('.btn-play').on('click', game.resetGame)
-
+  // if (store.isSignedIn === true) {
   $('.box').on('click', function () {
     console.log('store.over =', store.over)
     // console.log(updat  eScore('x'))
@@ -29,15 +28,18 @@ $(() => {
     }
   })
   authEvents.addHandlers()
+  // }
+  $('.btn-play').on('click', game.resetGame)
   gameEvents.addHandlers()
   $('#btn-account').on('click', function () {
-    $('#message-form').text('')
-    $('#sign-up').show()
-    if (store.isSignedIn === false) {
-      $('#change-password').hide()
-      $('#view-history').hide()
-      $('#btn-sign-out').hide()
+    // $('#message-form').text('')
+    if (store.isSignedIn === true) {
+      $('#change-password').show()
+      $('#view-history').show()
+      $('#btn-sign-out').show()
+      $('#sign-up').hide()
     } else {
+      $('#sign-up').show()
       $('#sign-up').show()
     }
   })

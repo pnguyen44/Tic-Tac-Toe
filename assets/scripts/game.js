@@ -1,11 +1,12 @@
+'use strict'
 const gamesApi = require('./games/api')
 const gamesUi = require('./games/ui')
 const gamesEvents = require('./games/events')
 const store = require('./store')
 
+// gamesEvents.test()
 let cells = ['', '', '', '', '', '', '', '', '']
 // store.over = false
-
 const isEmpty = function (element) {
   const len = element.html().length
   // console.log('length ', len)
@@ -15,45 +16,38 @@ const isEmpty = function (element) {
     return false
   }
 }
-let clickCount = store.clickCount
 
 // add response if empty and add to cells
 const playGame = function (element) {
   console.log('element', element)
-  const player = clickCount % 2 === 0 ? 'x' : 'o'
-  // clickCount = countClicks()
+  const player = store.clickCount % 2 === 0 ? 'x' : 'o'
+  // store.clickCount = countClicks()
   store.value = player
   const empty = isEmpty(element)
   if (store.over === false) {
     if (empty) {
-      clickCount += 1
-      console.log('click count', clickCount)
+      store.clickCount += 1
+      console.log('click count', store.clickCount)
       cells[element.attr('id')] = player
       element.html(player)
-      console.log(element.attr('id'))
-
-      gamesEvents.test()
-      gamesEvents.onUpdateGame(element.attr('id'), player, store.over)
-      // .then(gamesUi.onUpdateSuccess)
-      // .catch(gamesUi.onError)
-      console.log(gamesApi.update(element.attr('id'), player, false))
 
       const isWinner = checkForWinner(cells, player)
-      console.log('isWinner ' + isWinner)
+      // console.log('isWinner ' + isWinner)
       if (isWinner) {
         console.log('Winner ' + player)
-        // clickCount = 0
+        // store.clickCount = 0
         $('.btn-play').html('Winner is ' + player + '! Play again.')
         // $('.btn-play').off('click', '**')
         updateScore(player)
         store.over = true
         // return true
-      } else if (clickCount === 9) {
+      } else if (store.clickCount === 9) {
         console.log('There is a tie.')
         $('.btn-play').html('There is a tie, play again')
         store.over = true
         return false
       }
+      gamesEvents.onUpdateGame(element.attr('id'), player, store.over)
     }
   }
 }
@@ -66,9 +60,13 @@ const updateScore = function (player) {
     score = 0
   }
   // score += 1
-  console.log(score)
+  // console.log(score)
   $(element).html((score + 1))
-  // console.log($('element').html(score + 1))
+  // console.log($('element').html(score + 1)
+  if (player === 'x') {
+    $('#games-won').html(store.gamesWon += 1)
+  }
+  console.log('games = ', store.games)
 }
 
 const checkForWinner = function (cells, player) {
@@ -88,8 +86,14 @@ const checkForWinner = function (cells, player) {
   }
 }
 
+const clearBoard = () => { $('.box').text('') }
+
 const resetGame = function () {
-  clickCount = 0
+  console.log('box empty =', $('.box').text())
+  if ($('.box').text() !== '') {
+    addGamesPlayed()
+  }
+  store.clickCount = 0
   store.over = false
   $('.box').text('')
   cells = ['', '', '', '', '', '', '', '', '']
@@ -99,48 +103,114 @@ const resetGame = function () {
 // const games = [{"id":5526,"cells":["x","o","","","x","o","","","x"],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5525,"cells":["x","","","x","o","","x","o",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5528,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5529,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null}]
 
 // const getLastGame = function () {
-//   gamesEvents.getGames()
+//   // gamesEvents.getGames()
 //   console.log('store.game', store.games)
 //   const totalGames = store.games.length
 //   console.log('total games', totalGames)
 //   console.log('store.game = ', store.games)
-//   gamesEvents.getOneGame(store.games[totalGames - 1].id)
-//   $('#games-played').html(totalGames)
+//   const lastGame = gamesEvents.getOneGame(store.games[totalGames - 1].id)
+//   // $('#games-played').html(totalGames)
+//   consle.log('lastGame =', lastGame)
 // }
 
 const getPlayerStats = function () {
   // gamesEvents.getGames()
-  console.log('store.games results = ', store.game)
-  console.log(store.games)
-  const gamesWonArr = store.games.filter(function (obj) {
+  // console.log('store.games results = ', store.game)
+  // console.log(store.games)
+  const overTrue = store.games.filter((obj) => {
+    return obj.over === true
+  })
+  const gamesWonArr = overTrue.filter(function (obj) {
     return checkForWinner(obj.cells, 'x')
   })
-  const numGamesWon = gamesWonArr.length
-  $('#games-won').html(numGamesWon)
 
-  const totalGames = store.games.length
+  // const numGamesWon = gamesWonArr.length
+  $('#games-won').html(gamesWonArr.length)
+  store.gamesWon = gamesWonArr.length
+  // const totalGames = store.games.length
   // gamesEvents.getOneGame(store.games[totalGames - 1].id)
+  const totalGames = Math.abs(getNumOfBlankGames() - store.games.length)
   $('#games-played').html(totalGames)
+  store.gamesPlayed = totalGames
 }
 const getLastGame = function () {
-  console.log('store.games =', store.games)
-  console.log('store.games[store.games.length - 1].id = ', store.games[store.games.length - 1].id)
   // gamesEvents.getOneGame()
+  // done after signing in a new game was created
+  const lastGameID = store.games[store.games.length - 2].id
+  console.log('games =', store.games)
+  console.log('lastGameID =', lastGameID)
+  gamesEvents.getOneGame(lastGameID)
+  //   .then(disPlayLastGame())
+}
+
+const disPlayLastGame = function () {
+  if (store.game.over === false) {
+    const cells = store.game.cells
+    console.log('cells =', cells)
+    for (let c = 0; c < cells.length; c++) {
+      let element = '#' + c
+
+      console.log('element=', element)
+      console.log('cellval =', cells[c])
+      $('element').html(cells[c])
+      console.log("'$('element').html(cells[c])=", $('element').html(cells[c]))
+
+    }
+    // cells.forEach(function (c) {
+    //   let element = '#' + 'c'
+    //   console.log('element=', element)
+    //   $('element').html(cells[c])
+    //   console.log("'$('element').html(cells[c])=", $('element').html(cells[c]))
+    // })
+  }
+}
+
+// store.games = [{"id":5866,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":664,"email":"t3"},"player_o":null},{"id":5867,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":664,"email":"t3"},"player_o":null},{"id":5865,"cells":["x","","","o","x","","","o","x"],"over":true,"player_x":{"id":664,"email":"t3"},"player_o":null},{"id":5868,"cells":["x","o","x","o","o","x","x","x","o"],"over":true,"player_x":{"id":664,"email":"t3"},"player_o":null},{"id":5869,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":664,"email":"t3"},"player_o":null},{"id":5870,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":664,"email":"t3"},"player_o":null}]
+
+const getNumOfBlankGames = function () {
+  const blank = (x) => {
+    return x === ''
+  }
+  const blankGames = store.games.filter(function (obj) {
+    return obj.cells.every(blank)
+  })
+  // console.log(blankGames)
+  return blankGames.length
+}
+
+const addGamesPlayed = () => {
+  $('#games-played').html(store.gamesPlayed += 1)
+}
+
+// const updatePlayerStas = function () {
+//   const gamesPlayed = $('#games-played').html()
+//   const gamesWon = $('#games-won').html()
+// }
+
+const resetAll = () => {
+  $('.box').text('')
+  $('player_x').html('')
+  $('player_o').html('')
+  $('#games-played').html('-')
+  $('#games-won').html('-')
 }
 
 // $('.test').on('click', gamesEvents.onUpdateGame())
-// const games = [{"id":5526,"cells":["x","o","","","x","o","","","x"],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5525,"cells":["x","","","x","o","","x","o",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5528,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5529,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null}]
-// // console.log(Object.values(games))
-// const gamesWonArr = games.filter(function (obj) {
+// store.games = [{"id":5526,"cells":["x","o","","","x","o","","","x"],"over":true,"player_x":{"id":627,"email":"onn"},"player_o":null},
+// {"id":5525,"cells":["x","","","x","o","","x","o",""],"over":true,"player_x":{"id":627,"email":"onn"},"player_o":null},
+// {"id":5528,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},
+// {"id":5529,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null}]
+// console.log(store.games)
+// const overTrue = store.games.filter((obj) => {
+//   // console.log(obj.over)
+//   return obj.over === true
+// })
+// const gamesWonArr = overTrue.filter(function (obj) {
 // return checkForWinner(obj.cells, 'x')
 // })
 // const numGamesWon = gamesWonArr.length
-
-// console.log(getPlayerStats())
-
-// var obj = { foo: 'bar', baz: 42 };
-// console.log(Object.values(obj))
-// getLastGame()
+//
+// console.log(overTrue)
 
 module.exports = {
   isEmpty,
@@ -148,5 +218,7 @@ module.exports = {
   updateScore,
   getPlayerStats,
   resetGame,
-  getLastGame
+  getLastGame,
+  clearBoard,
+  resetAll
 }

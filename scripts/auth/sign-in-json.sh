@@ -7,8 +7,8 @@
 API="${API_ORIGIN:-http://tic-tac-toe.wdibos.com}"
 URL_PATH="/sign-in"
 
-EMAIL="onn"
-PASSWORD="onn"
+EMAIL="t3"
+PASSWORD="t3"
 
 curl "${API}${URL_PATH}" \
   --include \
