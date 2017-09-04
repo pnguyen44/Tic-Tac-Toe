@@ -33,16 +33,11 @@ const onUpdateSuccess = function (data) {
   console.log(store)
 }
 
-const test = () => {
-  console.log('test----')
-}
-
 module.exports = {
   onCreateSuccess,
   onError,
   onUpdateSuccess,
   onSuccess,
   getOneGameSuccess,
-  getGamesSuccess,
-  test
+  getGamesSuccess
 }
