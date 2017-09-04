@@ -17,7 +17,7 @@ const signUpSuccess = function (data) {
   // api.signIn(store.credential)
   //   .then(function () { console.log('sign-in after sign-up') })
   //   .catch(function () { console.log('error on signin after signup') })
-  clearForm()
+  // clearForm()
   // $('#sign-out').show()
   // $('#change-password').show()
   store.isSignedIn = true
@@ -42,7 +42,7 @@ const signInSuccess = function (data) {
   // $('#sign-up').hide()
   // $('#sign-in').hide()
   clearForm()
-  $('#modal').modal('hide')
+  // $('#modal').modal('hide')
   gamesEvents.getGames()
   gamesEvents.onCreateGame()
   // game.getLastGame()
