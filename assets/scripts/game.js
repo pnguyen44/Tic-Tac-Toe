@@ -36,14 +36,14 @@ const playGame = function (element) {
       if (isWinner) {
         console.log('Winner ' + player)
         // store.clickCount = 0
-        $('.btn-play').html('Winner is ' + player + '! Play again.')
+        $('.game-message').html('Winner is ' + player + '!')
         // $('.btn-play').off('click', '**')
         updateScore(player)
         store.over = true
         // return true
       } else if (store.clickCount === 9) {
         console.log('There is a tie.')
-        $('.btn-play').html('There is a tie, play again')
+        $('.game-message').html("It's a tie!")
         store.over = true
         return false
       }
@@ -89,17 +89,22 @@ const checkForWinner = function (cells, player) {
 const clearBoard = () => { $('.box').text('') }
 
 const resetGame = function () {
+  // if (store.isSignedIn === true) {
+  $('.box').text('')
+// }
   console.log('box empty =', $('.box').text())
-  if ($('.box').text() !== '') {
+  // if ($('.box').text() !== '') {
+  if(store.clickCount >= 1) {
     addGamesPlayed()
   }
   store.clickCount = 0
   store.over = false
-  $('.box').text('')
+
   cells = ['', '', '', '', '', '', '', '', '']
-  $(this).html('Play New Game')
+  $(this).html('clear Game')
   console.log('store.over', store.over)
-}
+  }
+
 // const games = [{"id":5526,"cells":["x","o","","","x","o","","","x"],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5525,"cells":["x","","","x","o","","x","o",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5528,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5529,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null}]
 
 // const getLastGame = function () {
@@ -189,10 +194,11 @@ const addGamesPlayed = () => {
 
 const resetAll = () => {
   $('.box').text('')
-  $('player_x').html('')
-  $('player_o').html('')
+  $('#player_x_score').html('0')
+  $('#player_o_score').html('0')
   $('#games-played').html('-')
   $('#games-won').html('-')
+  $('.game-message').html('')
 }
 
 // $('.test').on('click', gamesEvents.onUpdateGame())

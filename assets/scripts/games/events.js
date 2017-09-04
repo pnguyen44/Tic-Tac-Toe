@@ -39,16 +39,9 @@ const addHandlers = function () {
   $('.btn-play').on('click', () => {
     console.log('click count', store.clickCount)
     // if (store.clickCount >= 1) {
-      onCreateGame()
+    onCreateGame()
     // }
   })
-  // }
-  // $('.btn-play').on('click', onCreateGame)
-  $('#view-history').on('click', getGames)
-}
-
-const test = () => {
-  console.log('test----')
 }
 
 // module.exports = {
@@ -65,4 +58,3 @@ exports.onUpdateGame = onUpdateGame
 exports.getOneGame = getOneGame
 exports.getGames = getGames
 exports.addHandlers = addHandlers
-exports.test = test
