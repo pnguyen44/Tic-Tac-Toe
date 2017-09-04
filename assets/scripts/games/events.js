@@ -1,6 +1,7 @@
 const gamesApi = require('./api')
 const gamesUi = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
+const store = require('../store')
 
 const onCreateGame = function (event) {
   event.preventDefault()
@@ -12,20 +13,17 @@ const onCreateGame = function (event) {
     .then(gamesUi.onCreateSuccess)
     .catch(gamesUi.onError)
 }
-const onIndex = function (event) {
-  event.preventDefault()
-  const data = getFormFields(this)
-  gamesApi.index(data.game)
-    .then(gamesApi.onIndexSuccess)
-    .catch(gamesApi.onError)
+const getGames = function () {
+  gamesApi.index()
+    .then(gamesUi.getGamesSuccess)
+    .catch(gamesUi.onError)
 }
-// const onUpdateGame = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(this)
-//   gamesApi.update(data)
-//     .then(gamesUi.onCreateSuccess)
-//     .catch(gamesUi.onError)
-// }
+const getGame = function (id) {
+  gamesApi.show(id)
+    .then(gamesUi.getGameSuccess)
+    .catch(gamesUi.onError)
+}
+
 const onUpdateGame = function (i, value, over) {
   // event.preventDefault()
   // const data = getFormFields(this)
@@ -36,11 +34,13 @@ const onUpdateGame = function (i, value, over) {
 
 const addHandlers = function () {
   $('.btn-play').on('click', onCreateGame)
-  $('#view-history').on('click', onIndex)
+  $('#view-history').on('click', getGames)
 }
 
 module.exports = {
   onCreateGame,
   onUpdateGame,
+  getGames,
+  getGame,
   addHandlers
 }

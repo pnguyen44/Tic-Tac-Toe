@@ -18,9 +18,11 @@ $(() => {
 // require('./example')
 
 $(() => {
+  store.isSignedIn = false
   $('.btn-play').on('click', game.resetGame)
 
   $('.box').on('click', function () {
+    console.log('store.over =', store.over)
     // console.log(updat  eScore('x'))
     if (store.over === false) {
       game.playGame($(this))
@@ -28,7 +30,15 @@ $(() => {
   })
   authEvents.addHandlers()
   gameEvents.addHandlers()
-  $('#acct').on('click', function () {
+  $('#btn-account').on('click', function () {
     $('#message-form').text('')
+    $('#sign-up').show()
+    if (store.isSignedIn === false) {
+      $('#change-password').hide()
+      $('#view-history').hide()
+      $('#btn-sign-out').hide()
+    } else {
+      $('#sign-up').show()
+    }
   })
 })
