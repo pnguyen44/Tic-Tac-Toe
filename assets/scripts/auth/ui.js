@@ -21,6 +21,7 @@ const signUpSuccess = function (data) {
   // $('#sign-out').show()
   // $('#change-password').show()
   store.isSignedIn = true
+  store.isNewUser = true
   // api.signIn(data.user.id)
   $("#message-form").html('Successfully signed up. Please log in!')
 }
@@ -44,7 +45,7 @@ const signInSuccess = function (data) {
   clearForm()
   // $('#modal').modal('hide')
   gamesEvents.getGames()
-  gamesEvents.onCreateGame()
+  // gamesEvents.onCreateGame()
   // game.getLastGame()
   game.resetGame()
   $("#message-form").html('Successfully signed in')

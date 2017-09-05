@@ -18,13 +18,22 @@ const onCreateSuccess = function (data) {
 const getGamesSuccess = function (data) {
   store.games = data.games
   console.log('on getGamesSuccess store.games =', store.games)
+  // store.lastGameID = store.games[ store.games.length - 1 ].id
+  // console.log('last game id =', store.lastGameID)
   game.getPlayerStats()
+  // console.log('store.games[ store.games.length - 1 ].over =', store.games[ store.games.length - 1 ].over)
+  console.log('isNewUser =', store.isNewUser)
+  // if (store.isNewUser === true) {
+    gamesEvents.onCreateGame()
+  // } else {
+  //   game.getLastGame()
+  // }
 }
 
 const getOneGameSuccess = function (data) {
   store.game = data.game
   console.log('getOneGameSuccess store.game =', store.game)
-  // game.getLastGame()
+  // game.displayLastGame()
 }
 
 const onUpdateSuccess = function (data) {
