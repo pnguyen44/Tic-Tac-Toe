@@ -5,9 +5,10 @@ const gamesEvents = require('./games/events')
 const store = require('./store')
 
 // gamesEvents.test()
-let cells = ['', '', '', '', '', '', '', '', '']
+// let cells = ['', '', '', '', '', '', '', '', '']
 // store.over = false
 const isEmpty = function (element) {
+  console.log('element.length =', element.length)
   const len = element.html().length
   // console.log('length ', len)
   if (len <= 0) {
@@ -20,18 +21,26 @@ const isEmpty = function (element) {
 // add response if empty and add to cells
 const playGame = function (element) {
   console.log('element', element)
-  const player = store.clickCount % 2 === 0 ? 'x' : 'o'
-  // store.clickCount = countClicks()
+  const player = store.clickCount % 2 === 0 ? 'X' : 'O'
+  console.log('player =', player)
+  if (store.clickCount === 0) {
+    $('.game-message').html("X's turn")
+  }
+  // store.clickCount % 2 === 0 ? $('.game-message').html("X's turn") : $('.game-message').html("O's turn")
+
   store.value = player
-  const empty = isEmpty(element)
+  console.log('element=', element.html())
+  // const empty = isEmpty(element)
+  console.log('isempty =', isEmpty(element))
   if (store.over === false) {
-    if (empty) {
+    if (isEmpty(element)) {
       store.clickCount += 1
       console.log('click count', store.clickCount)
-      cells[element.attr('id')] = player
+      store.cells[element.attr('id')] = player
       element.html(player)
-
-      const isWinner = checkForWinner(cells, player)
+      store.clickCount % 2 === 0 ? $('.game-message').html("X's turn") : $('.game-message').html("O's turn")
+      console.log('store.cells =', store.cells)
+      const isWinner = checkForWinner(store.cells, player)
       // console.log('isWinner ' + isWinner)
       if (isWinner) {
         console.log('Winner ' + player)
@@ -45,7 +54,7 @@ const playGame = function (element) {
         console.log('There is a tie.')
         $('.game-message').html("It's a tie!")
         store.over = true
-        return false
+        // return false
       }
       gamesEvents.onUpdateGame(element.attr('id'), player, store.over)
     }
@@ -100,7 +109,7 @@ const resetGame = function () {
   store.clickCount = 0
   store.over = false
   $('.game-message').html('')
-  cells = ['', '', '', '', '', '', '', '', '']
+  store.cells = ['', '', '', '', '', '', '', '', '']
   $(this).html('clear Game')
   console.log('store.over', store.over)
 }
@@ -139,40 +148,44 @@ const getPlayerStats = function () {
   store.gamesPlayed = totalGames
 }
 const getLastGame = function () {
-  console.log('store.games[store.games.length - 1].over =', store.games[store.games.length - 1].over)
-  if (store.games[store.games.length - 1].over === false) {
-    store.lastGameID = store.games[store.games.length - 1].id
-    console.log('last id =', store.lastGameID)
-    gamesEvents.getOneGame(store.lastGameID)
-  } else {
-    gamesEvents.onCreateGame()
-  }
+  console.log('in getLastGame store.games = ', store.games)
+  const lastGame = store.games.reduce(function (prev, curr) {
+    return prev.id > curr.id ? prev : curr
+  })
+  // console.log('lastGame=', lastGame)
+  store.lastGameID = lastGame.id
+  gamesEvents.getOneGame(store.lastGameID)
 }
 
 const displayLastGame = function () {
   // if (store.game.over === false) {
-  const cells = store.game.cells
-  console.log('cells =', cells)
-  const isBlank = checkIfBoardIsBlank(cells)
+  // const cells = store.game.cells
+  store.cells = store.game.cells
+  console.log('cells =', store.cells)
+
+  const isBlank = checkIfBoardIsBlank(store.cells)
   console.log('isBlank =', isBlank)
   // if (isBlank) {
   //   // store.click = 0
   //   // gamesEvents.onCreateGame()
   // } else {
-  console.log('cells =', cells)
+  console.log('cells =', store.cells)
   // $('#0').html(cells[0])
-  for (let c = 0; c < cells.length; c++) {
+  for (let c = 0; c < store.cells.length; c++) {
     const element = '#' + c
     // let val = String(cells[c])
     // console.log('element=', element)
     // console.log('cellval =', cells[c])
-    $(element).html(cells[c])
+    $(element).html(store.cells[c])
     // console.log("$('element').html()=", $('element').html())
   }
   const board = $('.box').text()
   console.log('board =', board)
-  console.log('board.length =', board.length)
+  // console.log('board.length =', board.length)
+
   store.clickCount = board.length
+  console.log('clickCount = ', store.clickCount)
+  store.clickCount % 2 === 0 ? $('.game-message').html("X's turn") : $('.game-message').html("O's turn")
   // cells.forEach(function (c) {
   //   let element = '#' + 'c'
   //   console.log('element=', element)
@@ -232,7 +245,14 @@ const resetAll = () => {
 // store.games = [{"id":5526,"cells":["x","o","","","x","o","","","x"],"over":true,"player_x":{"id":627,"email":"onn"},"player_o":null},
 // {"id":5525,"cells":["x","","","x","o","","x","o",""],"over":true,"player_x":{"id":627,"email":"onn"},"player_o":null},
 // {"id":5528,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},
-// {"id":5529,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null}]
+// {"id":9999,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null}]
+//
+//
+//
+// const lastID = store.games.reduce(function (prev, curr) {
+//   return prev.id > curr.id ? prev.id : curr.id
+// })
+// console.log(lastID)
 // console.log(store.games)
 // const overTrue = store.games.filter((obj) => {
 //   // console.log(obj.over)
