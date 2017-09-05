@@ -43,6 +43,7 @@ const addHandlers = function () {
       onCreateGame()
     }
     // }
+    // }
   })
 }
 

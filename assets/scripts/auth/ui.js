@@ -1,13 +1,13 @@
 'use strict'
 const store = require('../store')
-const api = require('./api')
-const getFormFields = require('../../../lib/get-form-fields')
-const authEvents = require('./events')
+// const api = require('./api')
+// const getFormFields = require('../../../lib/get-form-fields')
+// const authEvents = require('./events')
 const gamesEvents = require('../games/events')
 const game = require('../game')
 
 const signUpSuccess = function (data) {
-  console.log('onsign up sucess data = ', data)
+  console.log('onsign up success data = ', data)
   console.log('store.user', data.user)
   console.log('Successfully Signed Up')
   store.user = data.user
@@ -20,10 +20,10 @@ const signUpSuccess = function (data) {
   // clearForm()
   // $('#sign-out').show()
   // $('#change-password').show()
-  store.isSignedIn = true
+  // store.isSignedIn = true
   store.isNewUser = true
   // api.signIn(data.user.id)
-  $("#message-form").html('Successfully signed up. Please log in!')
+  $('#message-form').html('Successfully signed up. Please log in!')
 }
 const signUpFailure = function (error) {
   console.log(error)
@@ -48,7 +48,7 @@ const signInSuccess = function (data) {
   // gamesEvents.onCreateGame()
   // game.getLastGame()
   game.resetGame()
-  $("#message-form").html('Successfully signed in')
+  $('#message-form').html('Successfully signed in')
   console.log('signInSuccess store.isSignedIn =', store.isSignedIn)
   // console.log('getGames results =', store.games)
   // $('#sign-out').show()
