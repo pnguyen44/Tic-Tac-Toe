@@ -12,7 +12,8 @@ const onError = function (err) {
 const onCreateSuccess = function (data) {
   console.log('onCreateSuccess = data', data)
   store.game = data.game
-  store.games.push(store.game)
+  $('.game-message').html("X's turn")
+  // store.games.push(store.game)
   console.log('onCreateSuccesss store.game =', store.game)
   console.log('onCreateSuccesss store.games =', store.games)
 }
@@ -36,7 +37,11 @@ const getOneGameSuccess = function (data) {
   store.game = data.game
   console.log('getOneGameSuccess store.game =', store.game)
   // game.getLastGame()
-  game.displayLastGame()
+  if (store.game.over === false) {
+    game.displayLastGame()
+  } else {
+    gamesEvents.onCreateGame()
+  }
 }
 
 const onUpdateSuccess = function (data) {
