@@ -24,7 +24,7 @@ const getGamesSuccess = function (data) {
 const getOneGameSuccess = function (data) {
   store.game = data.game
   console.log('getOneGameSuccess store.game =', store.game)
-  // game.getLastGame()
+  game.getLastGame()
 }
 
 const onUpdateSuccess = function (data) {
