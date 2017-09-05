@@ -39,7 +39,10 @@ const addHandlers = function () {
   $('.btn-play').on('click', () => {
     console.log('click count', store.clickCount)
     // if (store.clickCount >= 1) {
+    // If (store.isSignedIn === true) {
+    // if (store.games[store.games.length - 1].over === true && store.isSignedIn === true) {
     onCreateGame()
+    // }
     // }
   })
 }
