@@ -18,7 +18,9 @@ $(() => {
 // require('./example')
 
 $(() => {
+// store.clickCount = 0
   store.isSignedIn = false
+
   // if (store.isSignedIn === true) {
   $('.box').on('click', function () {
     console.log('store.over =', store.over)

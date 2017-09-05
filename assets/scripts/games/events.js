@@ -39,7 +39,9 @@ const addHandlers = function () {
   $('.btn-play').on('click', () => {
     console.log('click count', store.clickCount)
     // if (store.clickCount >= 1) {
-    onCreateGame()
+    if (store.click >= 1) {
+      onCreateGame()
+    }
     // }
   })
 }

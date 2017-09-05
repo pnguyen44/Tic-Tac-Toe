@@ -24,7 +24,7 @@ const getGamesSuccess = function (data) {
   // console.log('store.games[ store.games.length - 1 ].over =', store.games[ store.games.length - 1 ].over)
   console.log('isNewUser =', store.isNewUser)
   // if (store.isNewUser === true) {
-    gamesEvents.onCreateGame()
+  gamesEvents.onCreateGame()
   // } else {
   //   game.getLastGame()
   // }
