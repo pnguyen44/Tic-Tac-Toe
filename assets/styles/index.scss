@@ -8,6 +8,12 @@ $font-family-Amatic: 'Fredericka the Great';
 $grey: 	rgba(115, 115, 115, 1);
 $blue-violet: #7883B9;
 
+// .welcome-message {
+//     font-size: 15px;
+//     font-family: $font-family-Amatic,cursive;
+//     color: yellow;
+//     margin-top: -50px;
+// }
 h1,h3, h2, h4, p, span {
   font-family: $font-family-Amatic,cursive;
 }
@@ -62,11 +68,11 @@ span {
   text-align: center;
 }
 .header-message {
-  margin-top: 20px;
-font-size: 25px;
-float: right;
-margin-right: 200px;
-color: yellow;
+    margin-top: 20px;
+    font-size: 25px;
+    float: right;
+    margin-right: 150px;
+    color: yellow;
 }
 .box {
   border: 3px solid white;
@@ -106,6 +112,8 @@ color: yellow;
   // border: 5px solid $white;
 }
 .btn-primary {
+ // margin-left: 800px;
+ padding-right: 0px;
   margin-top: 20px;
   margin-bottom: 10px;
   width: 130px;
@@ -114,10 +122,8 @@ color: yellow;
   padding: 0px;
   background-color: royalBlue;
   font-family: $font-family-Amatic,cursive;
-  // clear: right;
-  // color: white;
   float: right;
-  margin-right: -400px;
+  margin-right: -440px;
 }
 .btn-play {
   width: 300px;
