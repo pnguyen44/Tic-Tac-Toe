@@ -99,7 +99,7 @@ const resetGame = function () {
   }
   store.clickCount = 0
   store.over = false
-
+  $('.game-message').html('')
   cells = ['', '', '', '', '', '', '', '', '']
   $(this).html('clear Game')
   console.log('store.over', store.over)
@@ -139,34 +139,40 @@ const getPlayerStats = function () {
   store.gamesPlayed = totalGames
 }
 const getLastGame = function () {
-  // gamesEvents.getOneGame()
-  // done after signing in a new game was created
-  const lastGameID = store.games[store.games.length - 2].id
-  console.log('games =', store.games)
-  console.log('lastGameID =', lastGameID)
-  gamesEvents.getOneGame(lastGameID)
-  //   .then(disPlayLastGame())
+  console.log('tore.games[store.games.length - 1].over =', store.games[store.games.length - 1].over)
+  if (store.games[store.games.length - 1].over === false) {
+    store.lastGameID = store.games[store.games.length - 1].id
+    console.log('get there')
+    console.log('last id =', store.lastGameID)
+    gamesEvents.getOneGame(store.lastGameID)
+  }
+  // disPlayLastGame()
 }
 
-const disPlayLastGame = function () {
-  if (store.game.over === false) {
-    const cells = store.game.cells
-    console.log('cells =', cells)
-    for (let c = 0; c < cells.length; c++) {
-      let element = '#' + c
+const displayLastGame = function () {
+  // if (store.game.over === false) {
+  const cells = store.game.cells
+  console.log('cells =', cells)
+  const isBlank = checkIfBoardIsBlank(cells)
+  console.log('isBlank =', isBlank)
+  if (isBlank) {
+    gamesEvents.onCreateGame()
+  } else {
+  console.log('cells =', cells)
+  for (let c = 0; c < cells.length; c++) {
+   let element = '#' + c
 
-      console.log('element=', element)
-      console.log('cellval =', cells[c])
-      $('element').html(cells[c])
-      console.log("'$('element').html(cells[c])=", $('element').html(cells[c]))
-
-    }
-    // cells.forEach(function (c) {
-    //   let element = '#' + 'c'
-    //   console.log('element=', element)
-    //   $('element').html(cells[c])
-    //   console.log("'$('element').html(cells[c])=", $('element').html(cells[c]))
-    // })
+    console.log('element=', element)
+    console.log('cellval =', cells[c])
+    $('element').html(cells[c])
+    console.log("'$('element').html(cells[c])=", $('element').html(cells[c]))
+  }
+  // cells.forEach(function (c) {
+  //   let element = '#' + 'c'
+  //   console.log('element=', element)
+  //   $('element').html(cells[c])
+  //   console.log("'$('element').html(cells[c])=", $('element').html(cells[c]))
+  // })
   }
 }
 
@@ -181,6 +187,21 @@ const getNumOfBlankGames = function () {
   })
   // console.log(blankGames)
   return blankGames.length
+}
+
+const checkIfBoardIsBlank = function (board) {
+  const blank = (x) => {
+    return x === ''
+  }
+  // const blankGames = board.filter(function (obj) {
+  return board.every(blank)
+  // })
+  console.log('blankGames =', blankGames)
+  // if (blankGames.length > 0) {
+  //   return false
+  // } else {
+  //   return true
+  // }
 }
 
 const addGamesPlayed = () => {
@@ -226,5 +247,6 @@ module.exports = {
   resetGame,
   getLastGame,
   clearBoard,
-  resetAll
+  resetAll,
+  displayLastGame
 }
