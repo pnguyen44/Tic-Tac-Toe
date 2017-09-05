@@ -1,6 +1,6 @@
 'use strict'
-const gamesApi = require('./games/api')
-const gamesUi = require('./games/ui')
+// const gamesApi = require('./games/api')
+// const gamesUi = require('./games/ui')
 const gamesEvents = require('./games/events')
 const store = require('./store')
 
@@ -91,10 +91,10 @@ const clearBoard = () => { $('.box').text('') }
 const resetGame = function () {
   // if (store.isSignedIn === true) {
   $('.box').text('')
-// }
+  // }
   console.log('box empty =', $('.box').text())
   // if ($('.box').text() !== '') {
-  if(store.clickCount >= 1) {
+  if (store.clickCount >= 1) {
     addGamesPlayed()
   }
   store.clickCount = 0
@@ -103,7 +103,7 @@ const resetGame = function () {
   cells = ['', '', '', '', '', '', '', '', '']
   $(this).html('clear Game')
   console.log('store.over', store.over)
-  }
+}
 
 // const games = [{"id":5526,"cells":["x","o","","","x","o","","","x"],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5525,"cells":["x","","","x","o","","x","o",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5528,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null},{"id":5529,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":627,"email":"onn"},"player_o":null}]
 
@@ -139,14 +139,14 @@ const getPlayerStats = function () {
   store.gamesPlayed = totalGames
 }
 const getLastGame = function () {
-  console.log('tore.games[store.games.length - 1].over =', store.games[store.games.length - 1].over)
+  console.log('store.games[store.games.length - 1].over =', store.games[store.games.length - 1].over)
   if (store.games[store.games.length - 1].over === false) {
     store.lastGameID = store.games[store.games.length - 1].id
-    console.log('get there')
     console.log('last id =', store.lastGameID)
     gamesEvents.getOneGame(store.lastGameID)
+  } else {
+    gamesEvents.onCreateGame()
   }
-  // disPlayLastGame()
 }
 
 const displayLastGame = function () {
@@ -155,25 +155,31 @@ const displayLastGame = function () {
   console.log('cells =', cells)
   const isBlank = checkIfBoardIsBlank(cells)
   console.log('isBlank =', isBlank)
-  if (isBlank) {
-    gamesEvents.onCreateGame()
-  } else {
+  // if (isBlank) {
+  //   // store.click = 0
+  //   // gamesEvents.onCreateGame()
+  // } else {
   console.log('cells =', cells)
+  // $('#0').html(cells[0])
   for (let c = 0; c < cells.length; c++) {
-   let element = '#' + c
-
-    console.log('element=', element)
-    console.log('cellval =', cells[c])
-    $('element').html(cells[c])
-    console.log("'$('element').html(cells[c])=", $('element').html(cells[c]))
+    const element = '#' + c
+    // let val = String(cells[c])
+    // console.log('element=', element)
+    // console.log('cellval =', cells[c])
+    $(element).html(cells[c])
+    // console.log("$('element').html()=", $('element').html())
   }
+  const board = $('.box').text()
+  console.log('board =', board)
+  console.log('board.length =', board.length)
+  store.clickCount = board.length
   // cells.forEach(function (c) {
   //   let element = '#' + 'c'
   //   console.log('element=', element)
   //   $('element').html(cells[c])
   //   console.log("'$('element').html(cells[c])=", $('element').html(cells[c]))
   // })
-  }
+  // }
 }
 
 // store.games = [{"id":5866,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":664,"email":"t3"},"player_o":null},{"id":5867,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":664,"email":"t3"},"player_o":null},{"id":5865,"cells":["x","","","o","x","","","o","x"],"over":true,"player_x":{"id":664,"email":"t3"},"player_o":null},{"id":5868,"cells":["x","o","x","o","o","x","x","x","o"],"over":true,"player_x":{"id":664,"email":"t3"},"player_o":null},{"id":5869,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":664,"email":"t3"},"player_o":null},{"id":5870,"cells":["","","","","","","","",""],"over":false,"player_x":{"id":664,"email":"t3"},"player_o":null}]
@@ -196,7 +202,7 @@ const checkIfBoardIsBlank = function (board) {
   // const blankGames = board.filter(function (obj) {
   return board.every(blank)
   // })
-  console.log('blankGames =', blankGames)
+  // console.log('blankGames =', blankGames)
   // if (blankGames.length > 0) {
   //   return false
   // } else {
