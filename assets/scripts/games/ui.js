@@ -25,19 +25,11 @@ const getGamesSuccess = function (data) {
   game.getPlayerStats()
   // console.log('store.games[ store.games.length - 1 ].over =', store.games[ store.games.length - 1 ].over)
   console.log('isNewUser =', store.isNewUser)
-<<<<<<< HEAD
-  // if (store.isNewUser === true) {
-  gamesEvents.onCreateGame()
-  // } else {
-  //   game.getLastGame()
-  // }
-=======
   if (store.isNewUser === true) {
     gamesEvents.onCreateGame()
   } else {
     game.getLastGame()
   }
->>>>>>> develop
 }
 
 const getOneGameSuccess = function (data) {
