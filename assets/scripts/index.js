@@ -32,7 +32,7 @@ $(() => {
   }
   $('.box').on('click', function () {
     console.log('store.over =', store.over)
-    // console.log(updat  eScore('x'))
+    // console.log(updat  eScore('X'))
     if (store.isSignedIn === true) {
       game.playGame($(this))
     // } else {
