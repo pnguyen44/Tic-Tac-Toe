@@ -1,15 +1,11 @@
 'use strict'
 const gamesApi = require('./api')
 const gamesUi = require('./ui')
-const getFormFields = require('../../../lib/get-form-fields')
+// const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 
 const onCreateGame = function () {
-  // event.preventDefault()
-  console.log('created games')
-  // const data = getFormFields(this)
-  // const game = data.game
-  // console.log(game)
+  console.log('onCreateGame - created game')
   gamesApi.create()
     .then(gamesUi.onCreateSuccess)
     .catch(gamesUi.onError)
@@ -27,8 +23,6 @@ const getOneGame = function (id) {
 }
 
 const onUpdateGame = function (i, value, over) {
-  // event.preventDefault()
-  // const data = getFormFields(this)
   gamesApi.update(i, value, over)
     .then(gamesUi.onUpdateSuccess)
     .catch(gamesUi.onError)
