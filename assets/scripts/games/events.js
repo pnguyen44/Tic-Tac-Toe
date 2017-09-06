@@ -1,11 +1,9 @@
 'use strict'
 const gamesApi = require('./api')
 const gamesUi = require('./ui')
-// const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 
 const onCreateGame = function () {
-  console.log('onCreateGame - created game')
   gamesApi.create()
     .then(gamesUi.onCreateSuccess)
     .catch(gamesUi.onError)
@@ -29,23 +27,10 @@ const onUpdateGame = function (i, value, over) {
 }
 
 const addHandlers = function () {
-  // if (store.clickCount >= 1) {
   $('.btn-play').on('click', () => {
-    console.log('click count', store.clickCount)
-    // if (store.clickCount >= 1) {
-      onCreateGame()
-    // }
+    onCreateGame()
   })
 }
-
-// module.exports = {
-//   onCreateGame,
-//   onUpdateGame,
-//   getOneGame,
-//   getGames,
-//   addHandlers,
-//   test
-// }
 
 exports.onCreateGame = onCreateGame
 exports.onUpdateGame = onUpdateGame

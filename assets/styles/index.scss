@@ -8,12 +8,6 @@ $font-family-Amatic: 'Fredericka the Great';
 $grey: 	rgba(115, 115, 115, 1);
 $blue-violet: #7883B9;
 
-// .welcome-message {
-//     font-size: 15px;
-//     font-family: $font-family-Amatic,cursive;
-//     color: yellow;
-//     margin-top: -50px;
-// }
 h1,h3, h2, h4, p, span {
   font-family: $font-family-Amatic,cursive;
 }
@@ -23,23 +17,16 @@ input {
 }
 
 body {
-  // background-color: $background-color;
   color: $font-color;
   background-image: url("https://i.imgur.com/Uf2q7rC.jpg");
   background-repeat: repeat;
   background-size: cover;
+  width: auto;
 }
 
 img {
     border-size: cover;
 }
-// body {
-//   background-color: $background-color;
-//   color: $font-color;
-//   background-image: "assets/styles/board.jpeg";
-//   background-repeat: no-repeat;
-//   background-size: cover;
-// }
 .stats {
   text-align: center;
 }
@@ -53,16 +40,18 @@ h2 {
   font-size: 40px;
   color: lightBlue;
 }
-.game-message {
 
+.game-message {
   font-size: 10;
   color: yellow;
   text-align: center;
   font-family: $font-family-Amatic,cursive;
 }
+
 span {
   font-size: 30px;
 }
+
 .score {
   padding-top: 50px;
   text-align: center;
@@ -71,30 +60,28 @@ span {
     margin-top: 20px;
     font-size: 25px;
     float: right;
-    margin-right: 150px;
+    margin-right: 160px;
     color: yellow;
+    text-align: right;
+    font-family: $font-family-Amatic, cursive;
 }
+
 .box {
   border: 3px solid white;
-  // border-bottom: 5px solid $white;
-  // border-right: 5px solid $white;
   padding-botom: -105px;
-    height: 100px;
+  height: 100px;
   text-align: center;
   width: 100px;
   box-shadow: 0px 0px 15px;
   font-size: 80px;
   font-family: $font-family-Amatic, cursive;
   }
-// #2 {
-//   border-bottom: : 5px solid $white;
-// }
+
 .button {
   color: black;
 }
 .container {
   float: left;
-  // margin-left: 500px;
   margin-top: -250px;
   margin-left: 470px;
   margin-right: 0px;
@@ -108,11 +95,8 @@ span {
   margin-left: -450px;
   text-align: center;
   font-size: 30px;
-  // padding-bottom: -50px;
-  // border: 5px solid $white;
 }
 .btn-primary {
- // margin-left: 800px;
  padding-right: 0px;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -131,8 +115,6 @@ span {
   font-size: 30px;
   color: white;
   font-family: $font-family-Amatic,cursive;
-  // margin-bottom: 0px;
-  // color: black;
   margin-left: -300px;
   float: left;
   margin-top: 190px;
@@ -151,8 +133,6 @@ span {
   font-family: $font-family-Amatic,cursive;
 }
 .player {
-  // padding-top: 5px;
-  // border: 1px solid $white;
   width: 100px;
   height: 100px;
   float: left;
@@ -160,20 +140,19 @@ span {
   margin-top: -50px;
   font-size: 30px;
 }
+
 .header {
 margin: 0px;
 }
+
 h1{
   color: orange;
   font-size: 50px;
   text-align: center;
   margin-bottom: -40px;
-  // margin-left: -100px;
   padding-bottom: 10px;
-  // margin-top: -10px;
   float: left;
   font-family: $font-family-Amatic, cursive;
-  // clear: right;
 }
 modal {
 font-size: 40px;
@@ -185,10 +164,6 @@ float: left;
   margin-bottom: -100px;
   margin-left: 90px;
   text-align: left;
-
-  // padding-bottom: -1000px;
-  // margin-bottom: 8000px;
-  // clear: both;
 }
 #message-form {
   float:left;
@@ -209,25 +184,10 @@ float: left;
     margin: 0;
     line-height: 1.42857;
     font-size: 27px;
-    color: orange;
+    color: black;
 }
 
 #btn-sign-out {
   background: royalBlue;
   color: white
 }
-// @media only screen and (max-width: 500px) {
-//   body {
-//     width: auto;
-//   }
-//   h2, h3, h4, span, .game-message, .header-message{
-//     font-size: 15px;
-//   }
-//   h1 {
-//     font-size: 20px;
-//   }
-//   .box {
-//     width: 30px;
-//     height: 30px;
-//   }
-// }

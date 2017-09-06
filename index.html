@@ -4,29 +4,23 @@
       <title>Tic Tac Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags unless you know what you are doing -->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
       <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Fredericka+the+Great" rel="stylesheet">
-      <!-- Do not add `script` tags unless you know what you are doing -->
+
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-    <!-- <img src="assets/styles/board.jpg"> -->
-    <div class="header">
-      <!-- <img alt="chalkboard" title = "chalkboard" src = "https://i.imgur.com/6PNntdp.jpg"> -->
-        <h1>Tic Tac Toe</h1>
-        <!-- <div class="welcome-message">Welcome Phuongnhat nguyen</div> -->
-        <div class="header-message">
-          <p>Please sign in to play</p>
-        </div>
-      <!-- Button trigger modal -->
-      <!-- Button trigger modal -->
-      <button type="button" id="btn-account" class="btn btn-primary" data-toggle="modal" data-target="#account">Account</button>
-  </div>
 
-      <!-- Modal -->
+    <div class="header">
+      <h1>Tic Tac Toe</h1>
+      <div class="header-message">
+        <p>Please log in to play</p>
+      </div>
+        <button type="button" id="btn-account" class="btn btn-primary" data-toggle="modal" data-target="#account">Account</button>
+    </div>
+
       <div class="modal fade" id="account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="disply: none;">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -47,9 +41,7 @@
                     <input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation">
                     <input type="submit" class="button" name="submit" value="Sign up!">
                   </fieldset>
-                  <!-- <button type="button" class="btn btn-primary">Sign Up</button> -->
                 </form>
-                <!-- class="password" data-toggle="password" -->
 
                   <form id="sign-in">
                       <fieldset>
@@ -58,7 +50,6 @@
                         <input type="password" name="credentials[password]" placeholder="Password">
                         <input type="submit" class="button" name="submit" value="Sign In!">
                       </fieldset>
-                      <!-- <button type="submit" class="btn btn-default">Sign In</button> -->
                   </form>
 
                   <form id="change-password">
@@ -68,21 +59,13 @@
                       <input type="password" name="passwords[new]" placeholder="New Password">
                       <input type="submit" class="button" name="submit" value="Change Password!">
                     </fieldset>
-                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Change Password</button> -->
                 </form>
-                <!-- <form id="view-history">
-                    <fieldset>
-                        <legend>View History</legend>
-                        <input type="submit" class="button" class="submit" value="View History">
-                    </fieldset>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">View History</button>
-                </form>  -->
+
             </div>
             <!-- Modal Footer -->
             <div class="modal-footer">
 
                 <button type="button" class="btn btn-primay" id="btn-sign-out">Sign Out</button>
-                <!-- <button type="button" class="btn btn-close">Close</button> -->
             </div>
           </div>
         </div>
@@ -106,8 +89,6 @@
     <h3></h3>
   </div>
       <div class="container">
-        <!-- <div class="col"> -->
-
           <div class="row">
             <div class="col-xs-4 box" id="0"></div>
             <div class="col-xs-4 box" id="1"></div>
@@ -119,9 +100,9 @@
             <div class="col-xs-4 box" id="5"></div>
         </div>
         <div class="row">
-          <div class="col-xs-4 box" id="6"></div>
-          <div class="col-xs-4 box" id="7"></div>
-          <div class="col-xs-4 box" id="8"></div>
+          <div class="col-xs-4 box bottom" id="6"></div>
+          <div class="col-xs-4 box bottom" id="7"></div>
+          <div class="col-xs-4 box bottom" id="8"></div>
         </div>
     </div>
     <div class="container-stats">
@@ -129,23 +110,12 @@
       <h2>Player X History</h2>
     </div>
 
-      <!-- <div class="stats"> -->
-        <span class='stats' id="games-played">--</span>
+      <span class='stats' id="games-played">--</span>
         <h4>Games Played</h4>
         <span class="stats"id="games-won">--</span>
         <h4>Games Won</h4>
       </div>
 
       <button type="button" class="btn btn-play">Clear Game</button>
-    <!-- </div> -->
-    <!-- <button type="button" class="test">TEST</button> -->
-
-      <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p> -->
     </body>
 </html>

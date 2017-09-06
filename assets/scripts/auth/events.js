@@ -5,12 +5,9 @@ const ui = require('./ui')
 
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log('event.target', event.target)
   const data = getFormFields(this)
-  console.log('onSignUp data =', data)
   clearMessage()
 
-  // store.credential = data
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -19,7 +16,6 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log('onSign-in data ', data)
   clearMessage()
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -29,7 +25,6 @@ const onSignIn = function (event) {
 const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data)
   clearMessage()
   api.changePassword(data)
     .then(ui.changePasswordSuccess)

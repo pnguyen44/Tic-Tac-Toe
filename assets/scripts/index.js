@@ -11,36 +11,19 @@ $(() => {
   setAPIOrigin(location, config)
 })
 
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
-
-// use require without a reference to ensure a file is bundled
-// require('./example')
-
 $(() => {
-// store.clickCount = 0
   store.isSignedIn = false
-  // $('.game-message').html("X's turn")
-  // if (store.isSignedIn === true) {
-  //   game.playGame($(this))
-  // }
-  // $('btn-play').hide()
   if (store.isSignedIn === false) {
     $('.btn-play').hide()
   } else {
     $('.btn-play').hide()
   }
   $('.box').on('click', function () {
-    console.log('store.over =', store.over)
-    // console.log(updat  eScore('X'))
     if (store.isSignedIn === true) {
       game.playGame($(this))
-    // } else {
-    //   $('.box').off()
     }
   })
   authEvents.addHandlers()
-  // }
   $('.btn-play').on('click', () => {
     if (store.isSignedIn === true) {
       game.resetGame()
@@ -49,7 +32,6 @@ $(() => {
   gameEvents.addHandlers()
   $('#btn-account').on('click', function () {
     $('#message-form').text('')
-    console.log('is sign in = ', store.isSignedIn)
     if (store.isSignedIn === true) {
       $('#change-password').show()
       $('#view-history').hide()
