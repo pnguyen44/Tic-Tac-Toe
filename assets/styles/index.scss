@@ -19,7 +19,8 @@ input {
 body {
   color: $font-color;
   width: auto;
-  background-color: rgb(48,48,48);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .stats {
   text-align: center;
