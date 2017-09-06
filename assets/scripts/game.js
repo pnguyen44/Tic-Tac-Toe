@@ -72,7 +72,7 @@ const updateScore = function (player) {
   // console.log(score)
   $(element).html((score + 1))
   // console.log($('element').html(score + 1)
-  if (player === 'x') {
+  if (player === 'X') {
     $('#games-won').html(store.gamesWon += 1)
   }
   console.log('games = ', store.games)
@@ -135,7 +135,7 @@ const getPlayerStats = function () {
     return obj.over === true
   })
   const gamesWonArr = overTrue.filter(function (obj) {
-    return checkForWinner(obj.cells, 'x')
+    return checkForWinner(obj.cells, 'X')
   })
 
   // const numGamesWon = gamesWonArr.length
@@ -259,7 +259,7 @@ const resetAll = () => {
 //   return obj.over === true
 // })
 // const gamesWonArr = overTrue.filter(function (obj) {
-// return checkForWinner(obj.cells, 'x')
+// return checkForWinner(obj.cells, 'X')
 // })
 // const numGamesWon = gamesWonArr.length
 //
