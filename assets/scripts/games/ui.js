@@ -47,7 +47,7 @@ const getOneGameSuccess = function (data) {
 const onUpdateSuccess = function (data) {
   store.game = data.game
   console.log('onUpdateSuccess store.game =', store.game)
-  console.log('onUpdateSuccess store.games =', store.games)
+  // console.log('onUpdateSuccess store.games =', store.games)
 }
 
 module.exports = {
