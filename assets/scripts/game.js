@@ -94,6 +94,7 @@ const clearBoard = () => { $('.box').text('') }
 
 const resetGame = function () {
   // if (store.isSignedIn === true) {
+  $('.game-message').html("X's turn")
   $('.box').text('')
   // }
   console.log('box empty =', $('.box').text())
