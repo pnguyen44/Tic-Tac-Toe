@@ -1,15 +1,11 @@
 'use strict'
 const gamesApi = require('./api')
 const gamesUi = require('./ui')
-const getFormFields = require('../../../lib/get-form-fields')
+// const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 
 const onCreateGame = function () {
-  // event.preventDefault()
-  console.log('created games')
-  // const data = getFormFields(this)
-  // const game = data.game
-  // console.log(game)
+  console.log('onCreateGame - created game')
   gamesApi.create()
     .then(gamesUi.onCreateSuccess)
     .catch(gamesUi.onError)
@@ -27,8 +23,6 @@ const getOneGame = function (id) {
 }
 
 const onUpdateGame = function (i, value, over) {
-  // event.preventDefault()
-  // const data = getFormFields(this)
   gamesApi.update(i, value, over)
     .then(gamesUi.onUpdateSuccess)
     .catch(gamesUi.onError)
@@ -38,12 +32,7 @@ const addHandlers = function () {
   // if (store.clickCount >= 1) {
   $('.btn-play').on('click', () => {
     console.log('click count', store.clickCount)
-    // if (store.clickCount >= 1) {
-    // If (store.isSignedIn === true) {
-    // if (store.games[store.games.length - 1].over === true && store.isSignedIn === true) {
     onCreateGame()
-    // }
-    // }
   })
 }
 
