@@ -4,13 +4,9 @@
 const gamesEvents = require('./games/events')
 const store = require('./store')
 
-// gamesEvents.test()
-// let cells = ['', '', '', '', '', '', '', '', '']
-// store.over = false
 const isEmpty = function (element) {
-  console.log('element.length =', element.length)
+  // console.log('element.length =', element.length)
   const len = element.html().length
-  // console.log('length ', len)
   if (len <= 0) {
     return true
   } else {
@@ -20,18 +16,17 @@ const isEmpty = function (element) {
 
 // add response if empty and add to cells
 const playGame = function (element) {
-  console.log('element', element)
+  // console.log('element', element)
   const player = store.clickCount % 2 === 0 ? 'X' : 'O'
-  console.log('player =', player)
+  // console.log('player =', player)
   if (store.clickCount === 0) {
     $('.game-message').html("X's turn")
   }
   // store.clickCount % 2 === 0 ? $('.game-message').html("X's turn") : $('.game-message').html("O's turn")
 
   store.value = player
-  console.log('element=', element.html())
-  // const empty = isEmpty(element)
-  console.log('isempty =', isEmpty(element))
+  // console.log('element=', element.html())
+  // console.log('isempty =', isEmpty(element))
   if (store.over === false) {
     if (isEmpty(element)) {
       store.clickCount += 1
@@ -62,7 +57,7 @@ const playGame = function (element) {
 }
 
 const updateScore = function (player) {
-  const element = '#player_' + player + '_score'
+  const element = '#player_' + player.toLowerCase() + '_score'
   // console.log($(element))
   let score = parseInt($(element).html())
   if (score === 'NAN') {
