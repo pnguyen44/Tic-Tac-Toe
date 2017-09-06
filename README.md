@@ -15,12 +15,12 @@ This tic tac toe game was created using HTML, CSS/SASS, jQuery, javascript, AJAX
 
 - When a player wins, a message will display who the winner is.
 
--User will also be able to click "Clear Board" to play another game.
+- User will also be able to click "Clear Board" to play another game.
 
--User can see their scores in the score board and the history of games played and games won in the Player X's History section.
+- User can see their scores in the score board and the history of games played and games won in the Player X's History section.
 
 ## Wireframe
-![alt text](assets/image/wireframe.jpg)
+wireframe: [assets/image/wireframe.jpg]
 
 ## Creation Process
 I started with creating the user story and drawing a wireframe to map out my game layout. From there, I wrote HTML and CSS for page layout.  Afterward, I moved on to writing the game logic in javascript and jQuery. Upon completion, I used AJAX to create authentication when signing up, signing in and changing password, as well as saving, updating and getting the games.
