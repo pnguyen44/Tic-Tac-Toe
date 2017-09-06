@@ -20,8 +20,16 @@ $(() => {
 $(() => {
 // store.clickCount = 0
   store.isSignedIn = false
-
+  // $('.game-message').html("X's turn")
   // if (store.isSignedIn === true) {
+  //   game.playGame($(this))
+  // }
+  // $('btn-play').hide()
+  if (store.isSignedIn === false) {
+    $('.btn-play').hide()
+  } else {
+    $('.btn-play').hide()
+  }
   $('.box').on('click', function () {
     console.log('store.over =', store.over)
     // console.log(updat  eScore('x'))

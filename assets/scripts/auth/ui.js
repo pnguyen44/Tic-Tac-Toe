@@ -54,6 +54,8 @@ const signInSuccess = function (data) {
   // $('#sign-out').show()
   // $('#change-password').show()
   // $("#modal").hide()
+  $('#account').modal('hide')
+  $('.btn-play').show()
 }
 const signInFailure = function (error) {
   console.error(error)
@@ -67,6 +69,7 @@ const changePasswordSuccess = (data) => {
   clearForm()
   $('#sign-out').show()
   $('#message-form').html('Successfully changed password')
+  $('#account').modal('hide')
 }
 
 const changePasswordFailure = (error) => {
@@ -82,6 +85,7 @@ const signOutSuccess = function (data) {
   game.resetAll()
   store.isSignedIn = false
   $('#message-form').html('Successfully signed out')
+  $('#account').modal('hide')
 }
 
 const signOutFailure = function (error) {
