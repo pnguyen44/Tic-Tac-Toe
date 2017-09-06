@@ -11,7 +11,7 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body class="container-fluid">
+    <body class="container-fluid" background = "assets/images/chalkboard.jpg">
 
     <div class="header">
       <h1>Tic Tac Toe</h1>
@@ -39,7 +39,7 @@
                     <input type="text" name="credentials[email]" placeholder="Email">
                     <input type="password" name="credentials[password]" placeholder="Password">
                     <input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation">
-                    <input type="submit" class="button" name="submit" value="Sign up!">
+                    <input type="submit" class="button" name="submit" value="Sign up">
                   </fieldset>
                 </form>
 
@@ -48,7 +48,7 @@
                         <legend>Sign In</legend>
                         <input type="text" name="credentials[email]" placeholder="Email">
                         <input type="password" name="credentials[password]" placeholder="Password">
-                        <input type="submit" class="button" name="submit" value="Sign In!">
+                        <input type="submit" class="button" name="submit" value="Sign In">
                       </fieldset>
                   </form>
 
@@ -57,14 +57,12 @@
                       <legend>Change Password</legend>
                       <input type="password" name="passwords[old]" placeholder="Old Password">
                       <input type="password" name="passwords[new]" placeholder="New Password">
-                      <input type="submit" class="button" name="submit" value="Change Password!">
+                      <input type="submit" class="button" name="submit" value="Change Password">
                     </fieldset>
                 </form>
 
             </div>
-            <!-- Modal Footer -->
             <div class="modal-footer">
-
                 <button type="button" class="btn btn-primay" id="btn-sign-out">Sign Out</button>
             </div>
           </div>
