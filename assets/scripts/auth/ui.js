@@ -37,25 +37,14 @@ const signInSuccess = function (data) {
   store.token = data.user.token
   console.log('ons sign in store.token=', store.token)
   store.isSignedIn = true
-  // $('#change-password').show()
-  // $('#btn-sign-out').show()
-  // $('#view-history').show()
-  // $('#sign-up').hide()
-  // $('#sign-in').hide()
   clearForm()
-  // $('#modal').modal('hide')
   gamesEvents.getGames()
-  // gamesEvents.onCreateGame()
-  // game.getLastGame()
   game.resetGame()
-  $('#message-form').html('Successfully signed in')
+  // $('#message-form').html('Successfully signed in')
   console.log('signInSuccess store.isSignedIn =', store.isSignedIn)
-  // console.log('getGames results =', store.games)
-  // $('#sign-out').show()
-  // $('#change-password').show()
-  // $("#modal").hide()
   $('#account').modal('hide')
   $('.btn-play').show()
+  $('.header-message').hide()
 }
 const signInFailure = function (error) {
   console.error(error)
