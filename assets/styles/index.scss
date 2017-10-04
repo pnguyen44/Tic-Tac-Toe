@@ -16,6 +16,7 @@ body {
   background-repeat: repeat;
   background-size: cover;
   font-family: $font-family-Amatic, cursive;
+  width: auto;
 }
 
 .box {
@@ -45,7 +46,7 @@ body {
   color: white;
   font-family: $font-family-Amatic,cursive;
   background-color: $grey;
-  margin: auto;
+  // margin: auto;
   margin-top: 3%;
 }
 
@@ -59,15 +60,17 @@ body {
 
 .container-stats {
   text-align: center;
+  margin-top: 7%;
 }
 
 .game-message {
-  height: 18px;
+  height: 41px;
   font-size: 40px;
   color: yellow;
   text-align: center;
-  font-family: $font-family-Amatic, cursive;
-  margin-bottom: 4%;
+  margin-top: 2%;
+  font-family: "Fredericka the Great", cursive;
+  margin-bottom: 6%;
 }
 
 h1 {
@@ -81,7 +84,7 @@ h2 {
 }
 
 h4 {
-  font-size: $font-size-main;
+  text-align: center;
 }
 
 .header-message {
@@ -117,6 +120,7 @@ h4 {
   margin: auto;
   text-align: right;
   font-family: $font-family-Amatic,cursive;
+  margin-top: 7%;
 
 }
 
@@ -126,8 +130,5 @@ h4 {
 
 .stats {
   text-align: center;
-}
-
-.stats h4{
-  text-align: center;
+  font-size: $font-size-main;
 }
