@@ -16,7 +16,7 @@ $(() => {
   if (store.isSignedIn === false) {
     $('.btn-play').hide()
   } else {
-    $('.btn-play').hide()
+    $('.btn-play').show()
   }
   $('.box').on('click', function () {
     if (store.isSignedIn === true) {
