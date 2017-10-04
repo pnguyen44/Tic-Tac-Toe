@@ -1,115 +1,159 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Tic Tac Toe</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Fredericka+the+Great" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body class="container-fluid">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Fredericka+the+Great" rel="stylesheet">
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+  <div class="row">
+    <div class="col-xs-6">
       <div class="header">
-      <h1>Tic Tac Toe</h1>
+        <h1>Tic Tac Toe</h1>
+      </div>
+    </div>
+    <div class="col-xs-5">
       <div class="header-message">
-        <p>Please log in to play</p>
-      </div>
-        <button type="button" id="btn-account" class="btn btn-primary" data-toggle="modal" data-target="#account">Account</button>
-    </div>
-
-      <div class="modal fade" id="account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="disply: none;">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Account</h5>
-              <p id='message-form'></p>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-
-              <form id="sign-up" class="hide-signed-in">
-                  <fieldset>
-                    <legend>Sign up</legend>
-                    <input type="text" name="credentials[email]" placeholder="Email">
-                    <input type="password" name="credentials[password]" placeholder="Password">
-                    <input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation">
-                    <input type="submit" class="button" name="submit" value="Sign up">
-                  </fieldset>
-                </form>
-
-                  <form id="sign-in">
-                      <fieldset>
-                        <legend>Sign In</legend>
-                        <input type="text" name="credentials[email]" placeholder="Email">
-                        <input type="password" name="credentials[password]" placeholder="Password">
-                        <input type="submit" class="button" name="submit" value="Sign In">
-                      </fieldset>
-                  </form>
-
-                  <form id="change-password">
-                    <fieldset>
-                      <legend>Change Password</legend>
-                      <input type="password" name="passwords[old]" placeholder="Old Password">
-                      <input type="password" name="passwords[new]" placeholder="New Password">
-                      <input type="submit" class="button" name="submit" value="Change Password">
-                    </fieldset>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primay" id="btn-sign-out">Sign Out</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="score-board">
-    <div class="score-board-title">
-      <h2>Scoreboard</h2>
-    </div>
-
-      <div class="players">
-          <div class="player" id="player_x">X
-            <div class="score" id="player_x_score">0</div>
-          </div>
-          <div class="player" id="player_o">O
-            <div class="score" id="player_o_score">0</div>
-          </div>
+        <p>Please sign in to play</p>
       </div>
     </div>
-    <div class="game-message">
+    <div class="col-xs-1">
+      <button type="button" id="btn-account" class="btn btn-primary" data-toggle="modal" data-target="#account">Account</button>
+    </div>
   </div>
-      <div class="container">
-          <div class="row">
-            <div class="col-xs-4 box" id="0"></div>
-            <div class="col-xs-4 box" id="1"></div>
-            <div class="col-xs-4 box" id="2"></div>
+
+  <!-- Modal auth -->
+  <div class="modal fade" id="account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="disply: none;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-title" id="exampleModalLabel">Account</div>
+          <div class="modal-body">
+            <div id='message-form'></div>
+            <form id="sign-up" class="hide-signed-in">
+              <fieldset>
+                <legend>Sign up</legend>
+                <div class="break">
+                  <input class="form-control" type="text" name="credentials[email]" placeholder="Email">
+                </div>
+                <div class="break">
+                  <input class="form-control" type="password" name="credentials[password]" placeholder="Password">
+                </div>
+                <div class="break">
+                  <input class="form-control" type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+                </div>
+                <button type="submit" class="btn btn-primary pull-right" name="submit" value="Sign Up">Sign Up</button>
+              </fieldset>
+            </form>
+            <form id="sign-in">
+              <fieldset>
+                <legend>Sign In</legend>
+                <div class="break">
+                  <input class="form-control" type="text" name="credentials[email]" placeholder="Email">
+                </div>
+                <div class="break">
+                  <input class="form-control" type="password" name="credentials[password]" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary pull-right" name="submit" value="Sign In">Sign In</button>
+              </fieldset>
+            </form>
+            <form id="change-password">
+              <fieldset>
+                <legend>Change Password</legend>
+                <div class="break">
+                  <input class="form-control" type="password" name="passwords[old]" placeholder="Old Password">
+                </div>
+                <div class="break">
+                  <input class="form-control" type="password" name="passwords[new]" placeholder="New Password">
+                </div>
+                <button type="submit" class="btn btn-primary pull-right" name="submit" value="Change Password!">Change Password</button>
+              </fieldset>
+            </form>
           </div>
-          <div class="row">
-            <div class="col-xs-4 box" id="3"></div>
-            <div class="col-xs-4 box" id="4"></div>
-            <div class="col-xs-4 box" id="5"></div>
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" id="btn-sign-out">Sign Out</button>
+          </div>
         </div>
-        <div class="row">
-          <div class="col-xs-4 box bottom" id="6"></div>
-          <div class="col-xs-4 box bottom" id="7"></div>
-          <div class="col-xs-4 box bottom" id="8"></div>
-        </div>
+      </div>
     </div>
-    <div class="container-stats">
+  </div>
+
+  <div class="col-sm-12 game-message">
+    <h3></h3>
+  </div>
+  <div class="col-sm-3 score-board container">
+    <div class="col-sm-12">
+      <div class="score-board-title">
+        <h2>Scoreboard</h2>
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="col-sm-6">
+        <div class="player" id="player_x">X:</div>
+      </div>
+      <div class="col-sm-6">
+        <div class="score" id="player_x_score">0</div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="col-sm-6">
+        <div class="player" id="player_o">O:</div>
+      </div>
+      <div class="col-sm-6">
+        <div class="score" id="player_o_score">0</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-board col-sm-6">
+
+    <div class="row">
+      <div class="col-xs-4 box" id="0"></div>
+      <div class="col-xs-4 box" id="1"></div>
+      <div class="col-xs-4 box" id="2"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-4 box" id="3"></div>
+      <div class="col-xs-4 box" id="4"></div>
+      <div class="col-xs-4 box" id="5"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-4 box" id="6"></div>
+      <div class="col-xs-4 box" id="7"></div>
+      <div class="col-xs-4 box" id="8"></div>
+    </div>
+
+    <div class="col-xs-12 container-btn-play">
+      <button type="button" class="btn btn-play">Clear Game</button>
+    </div>
+
+  </div>
+
+  <div class="col-sm-3 container-stats">
     <div class="player_stats">
       <h2>Player X History</h2>
     </div>
 
-      <span class='stats' id="games-played">--</span>
-        <h4>Games Played</h4>
-        <span class="stats"id="games-won">--</span>
-        <h4>Games Won</h4>
-      </div>
-      <button type="button" class="btn btn-play">Clear Game</button>
-    </body>
+    <span class='stats' id="games-played">--</span>
+    <h4>Games Played</h4>
+    <span class="stats" id="games-won">--</span>
+    <h4>Games Won</h4>
+  </div>
+
+</body>
+
 </html>
