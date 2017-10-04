@@ -48,6 +48,7 @@ const signOutSuccess = function (data) {
   $('#message-form').html('Successfully signed out')
   $('#account').modal('hide')
   $('.header-message').html('Please log in to play')
+  $('.btn-play').hide()
 }
 
 const signOutFailure = function () {
