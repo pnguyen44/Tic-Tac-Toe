@@ -107,12 +107,12 @@ h4 {
 
 .player {
   font-size: $font-size-main;
-  text-align: right;
+  text-align: center;
 }
 
 .score {
   font-size: $font-size-main;
-  text-align: left;
+  text-align: center;
 }
 
 .score-board {
@@ -121,7 +121,6 @@ h4 {
   text-align: right;
   font-family: $font-family-Amatic,cursive;
   margin-top: 7%;
-
 }
 
 .score-board-title {
@@ -131,4 +130,19 @@ h4 {
 .stats {
   text-align: center;
   font-size: $font-size-main;
+}
+
+@media (max-width: 425px) {
+  body {
+    width: auto;
+  }
+  .box {
+    height: 109px;
+  }
+  .game-message {
+    margin-top: 53%;
+  }
+  .btn-play {
+    font-size: 30px;
+  }
 }
