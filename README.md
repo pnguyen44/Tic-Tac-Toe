@@ -15,7 +15,7 @@ This tic tac toe game was created using HTML, CSS/SASS, jQuery, javascript, AJAX
 
 - When a player wins, a message will display who the winner is.
 
-- User will also be able to click "Clear Board" to play another game.
+- User will also be able to click "Clear Game" to play another game.
 
 - User can see their scores in the score board and the history of games played and games won in the Player X's History section.
 
