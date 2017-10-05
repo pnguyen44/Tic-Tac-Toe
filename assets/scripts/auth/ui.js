@@ -22,7 +22,7 @@ const signInSuccess = function (data) {
   game.resetGame()
   $('#account').modal('hide')
   $('.btn-play').show()
-  $('.header-message').html('Welcome to the game')
+  // $('.header-message').html('Welcome to the game')
 }
 const signInFailure = function () {
   $('#message-form').html('Error on sign in')
@@ -47,8 +47,9 @@ const signOutSuccess = function (data) {
   store.isSignedIn = false
   $('#message-form').html('Successfully signed out')
   $('#account').modal('hide')
-  $('.header-message').html('Please log in to play')
+  // $('.header-message').html('Please log in to play')
   $('.btn-play').hide()
+  $('.game-message').html('Please Log In')
 }
 
 const signOutFailure = function () {

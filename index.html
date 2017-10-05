@@ -8,26 +8,27 @@
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Fredericka+the+Great" rel="stylesheet">
+
   <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
   <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-</head>
+
+  <meta name="viewport" content="width=device-width">
+  </head>
 
 <body class="container-fluid">
-  <div class="row">
-    <div class="col-xs-6">
-      <div class="header">
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <header>
         <h1>Tic Tac Toe</h1>
-      </div>
+        <!-- <div class="navbar-header"> -->
+          <button type="button" id="btn-account" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#account">Account</button>
+        <!-- </div> -->
+      </header>
+      <!-- Button trigger modal -->
+      <!-- <button type="button" id="btn-account" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#account">Account</button> -->
     </div>
-    <div class="col-xs-5">
-      <div class="header-message">
-        <p>Please sign in to play</p>
-      </div>
-    </div>
-    <div class="col-xs-1">
-      <button type="button" id="btn-account" class="btn btn-primary" data-toggle="modal" data-target="#account">Account</button>
-    </div>
-  </div>
+  </nav>
 
   <!-- Modal auth -->
   <div class="modal fade" id="account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="disply: none;">
@@ -92,10 +93,11 @@
   <!-- <div class="col-sm-12 game-message">
     <h3></h3>
   </div> -->
-  <div class="col-xs-12 col-sm-3 score-board container">
+  <div class="row">
+  <div class="col-3 col-xs-12 col-sm-3 score-board container">
     <div class="col-sm-12">
       <div class="score-board-title">
-        <h2>Scoreboard</h2>
+        <h2>scoreboard</h2>
       </div>
     </div>
 
@@ -117,7 +119,7 @@
     </div>
   </div>
 
-  <div class="container-board col-sm-6">
+  <div class=" col-3 container-board col-sm-6">
 
     <div class="game-message"></div>
 
@@ -146,7 +148,7 @@
 
   </div>
 
-  <div class="col-sm-3 container-stats">
+  <div class="col-3 col-sm-3 container-stats align-items-center">
     <div class="player_stats">
       <h2>Player X History</h2>
     </div>
@@ -156,7 +158,7 @@
     <span class="stats" id="games-won">--</span>
     <h4>Games Won</h4>
   </div>
-
+</div>
 </body>
 
 </html>
