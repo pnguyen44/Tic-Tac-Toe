@@ -14,6 +14,7 @@ $(() => {
 $(() => {
   store.isSignedIn = false
   if (store.isSignedIn === false) {
+    $('.game-message').html('Please Log In')
     $('.btn-play').hide()
   }
 
