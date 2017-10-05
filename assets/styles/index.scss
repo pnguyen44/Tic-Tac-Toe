@@ -13,7 +13,7 @@ body {
   background-color: $background-color;
   color: $font-color;
   background-image: url("https://i.imgur.com/Uf2q7rC.jpg");
-  background-repeat: repeat;
+  // background-repeat: repeat;
   background-size: cover;
   font-family: $font-family-Amatic, cursive;
   width: auto;
@@ -186,15 +186,16 @@ header {
 @media only screen and (max-width: 768px) and (min-width: 768px) {
   .box {
     height: 75px;
-    font-size: 1px;
+    font-size: 51px;
   }
   #btn-account {
     margin-top: -10%;
   }
   .game-message {
-    margin-bottom: 21%;
+    margin-top: 10%;
     font-size: 35px;
   }
+
   .btn-play {
     font-size: 30px;
   }
@@ -221,7 +222,7 @@ header {
     margin-top: -7%;
   }
   .game-message {
-    margin-top: -4%;
+    margin-top: 17%;
   }
 }
 
@@ -236,5 +237,8 @@ header {
   }
   h2, h4, .score, .player, .stats {
     font-size: 49px;
+  }
+  .game-message {
+    margin-top: 17%;
   }
 }
