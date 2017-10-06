@@ -20,10 +20,10 @@ body {
 }
 
 .box {
-  border: 3px solid white;
+  // border: 3px solid white;
   height: 131px;
   text-align: center;
-  box-shadow: 0px 0px 15px;
+  // box-shadow: 0px 0px 15px;
   font-size: 80px;
   font-family: $font-family-Amatic, cursive;
 }
@@ -112,6 +112,21 @@ header {
 .player {
   font-size: $font-size-main;
   text-align: right;
+}
+
+.row-bottom {
+  border-top-style: solid;
+}
+
+.row-top {
+  border-bottom-style: solid;
+}
+
+.col-left {
+  border-right-style: solid;
+}
+.col-middle {
+  border-right-style: solid;
 }
 
 .score {
