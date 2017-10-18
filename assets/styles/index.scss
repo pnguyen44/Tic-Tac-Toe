@@ -152,45 +152,45 @@ header {
   text-align: center;
   font-size: $font-size-main;
 }
-
-@media (max-width: 425px) {
-  .box {
-    height: 85px;
-    font-size: 57px;
-    width: 33%;
-  }
-  #btn-account {
-    // margin-top: -13%;
-    font-size: 13px;
-    float: right;
-    // width: 25%;
-}
-  .game-message {
-    margin-top: 29%;
-    font-size: 20px;
-    margin-bottom: 1%;
-  }
-  .btn-play {
-    font-size: 30px;
-  }
-
-  .header-message {
-    display: none;
-  }
-  h1 {
-    font-size: 32px;
-    display: inline;
-  }
-
-  h2, h4, .score, .player, .stats {
-  font-size: 183%;
-  }
-
-  .score-board {
-    margin-top: -30px;
-  }
-}
-@media only screen and (max-width: 768px) and (min-width: 320px) {
+//
+// @media (max-width: 425px) {
+//   .box {
+//     height: 85px;
+//     font-size: 57px;
+//     width: 33%;
+//   }
+//   #btn-account {
+//     // margin-top: -13%;
+//     font-size: 13px;
+//     float: right;
+//     // width: 25%;
+// }
+//   .game-message {
+//     margin-top: 29%;
+//     font-size: 20px;
+//     margin-bottom: 1%;
+//   }
+//   .btn-play {
+//     font-size: 30px;
+//   }
+//
+//   .header-message {
+//     display: none;
+//   }
+//   h1 {
+//     font-size: 32px;
+//     display: inline;
+//   }
+//
+//   h2, h4, .score, .player, .stats {
+//   font-size: 183%;
+//   }
+//
+//   .score-board {
+//     margin-top: -30px;
+//   }
+// }
+@media only screen and (max-width: 767px) and (min-width: 320px) {
   .game-message {
     font-size: 20px;
     margin-top: 18%;
@@ -260,7 +260,7 @@ header {
 //   }
 // }
 
-@media only screen and (max-width: 1024px) and (min-width: 769px) {
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
   .box {
     height: 108px;
   }
@@ -270,7 +270,7 @@ header {
   .game-message {
     margin-top: 17%;
   }
-  h2, h4, .score, .player, .stats, .score-board-title, .game-message {
+  h2, h4, .score, .player, .stats, .score-board-title, .game-message, .btn-play {
     font-size: 20px;
   }
 }
