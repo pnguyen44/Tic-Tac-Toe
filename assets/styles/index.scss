@@ -31,8 +31,8 @@ body {
 }
 
 #btn-account {
-  margin-top: -5%;
-  font-size: 24px;
+  // margin-top: -5%;
+  font-size: 13px;
   float: right;
 }
 
@@ -71,8 +71,9 @@ body {
 }
 
 h1 {
-  font-size: 64px;
+  font-size: 29px;
   color: orange;
+  display: inline;
 }
 
 h2 {
@@ -146,91 +147,48 @@ header {
   font-size: $font-size-main;
 }
 
-@media (max-width: 425px) {
-  .box {
-    height: 85px;
-    font-size: 57px;
-    width: 33%;
-  }
-  #btn-account {
-    margin-top: -13%;
-    font-size: 11px;
-    float: right;
-    width: 25%;
-}
+@media only screen and (max-width: 767px) and (min-width: 320px) {
   .game-message {
-    margin-top: 29%;
     font-size: 20px;
-    margin-bottom: 1%;
-  }
-  .btn-play {
-    font-size: 30px;
+    margin-top: 18%;
   }
 
-  .header-message {
-    display: none;
-  }
-  h1 {
-    font-size: 32px;
+  .container-board {
+    padding: 58px 27%;
   }
 
-  h2, h4, .score, .player, .stats {
-  font-size: 183%;
-  }
-
-  .score-board {
-    margin-top: -30px;
-  }
-}
-
-@media only screen and (max-width: 320px) and (min-width: 320px) {
-  #btn-account {
-    margin-top: -17%;
-  }
-}
-@media only screen and (max-width: 375px) and (min-width: 375px) {
-  #btn-account {
-    margin-top: -14%;
-  }
-}
-@media only screen and (max-width: 768px) and (min-width: 768px) {
   .box {
     height: 75px;
-    font-size: 51px;
-  }
-  #btn-account {
-    margin-top: -10%;
-  }
-  .game-message {
-    margin-top: 10%;
-    font-size: 35px;
+    font-size: 43px;
   }
 
-  .btn-play {
-    font-size: 30px;
+  .container-stats {
+    margin-top: 4%;
   }
 
-  h1 {
+
+  .container-fluid h1 {
     font: 8px;
   }
 
-  h2 {
-    font-size: 152%;
-  }
-  h4, .score, .player, .stats {
-    font-size: 120%;
+  h2, h4, .score, .player, .stats, .score-board-title, .game-message, .btn-play {
+    font-size: 17px;
   }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 1024px) {
+
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
   .box {
     height: 108px;
   }
   #btn-account {
-    margin-top: -7%;
+    // margin-top: -7%;
   }
   .game-message {
     margin-top: 17%;
+  }
+  h2, h4, .score, .player, .stats, .score-board-title, .game-message, .btn-play {
+    font-size: 20px;
   }
 }
 
@@ -239,11 +197,14 @@ header {
     height: 199px;
     font-size: 140px;
   }
-  #btn-account {
-    margin-top: -3%;
-    font-size: 49px;
+  h1 {
+    font-size: 40px;
   }
-  h2, h4, .score, .player, .stats {
+  #btn-account {
+    // margin-top: -3%;
+    font-size: 30px;
+  }
+  h2, h4, .score, .player, .stats, .score-board-title {
     font-size: 49px;
   }
   .game-message {
