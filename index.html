@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Fredericka+the+Great" rel="stylesheet">
+
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+  <meta name="viewport" content="width=device-width">
+  </head>
+
+<body>
+
+  <nav class="navbar navbar-inverse bg-primary navbar-fixed-top">
+    <div class="container-fluid">
+      <header>
+        <h1>Tic Tac Toe</h1>
+        <!-- <div class="navbar-header"> -->
+          <button type="button" id="btn-account" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#account">Account</button>
+        <!-- </div> -->
+      </header>
+      <!-- Button trigger modal -->
+      <!-- <button type="button" id="btn-account" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#account">Account</button> -->
+    </div>
+  </nav>
+
+  <!-- Modal auth -->
+  <div class="modal fade" id="account" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="disply: none;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-title" id="exampleModalLabel">Account</div>
+          <div class="modal-body">
+            <div id='message-form'></div>
+            <form id="sign-up" class="hide-signed-in">
+              <fieldset>
+                <legend>Sign up</legend>
+                <div class="break">
+                  <input class="form-control" type="text" name="credentials[email]" placeholder="Email">
+                </div>
+                <div class="break">
+                  <input class="form-control" type="password" name="credentials[password]" placeholder="Password">
+                </div>
+                <div class="break">
+                  <input class="form-control" type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+                </div>
+                <button type="submit" class="btn btn-primary pull-right" name="submit" value="Sign Up">Sign Up</button>
+              </fieldset>
+            </form>
+            <form id="sign-in">
+              <fieldset>
+                <legend>Sign In</legend>
+                <div class="break">
+                  <input class="form-control" type="text" name="credentials[email]" placeholder="Email">
+                </div>
+                <div class="break">
+                  <input class="form-control" type="password" name="credentials[password]" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary pull-right" name="submit" value="Sign In">Sign In</button>
+              </fieldset>
+            </form>
+            <form id="change-password">
+              <fieldset>
+                <legend>Change Password</legend>
+                <div class="break">
+                  <input class="form-control" type="password" name="passwords[old]" placeholder="Old Password">
+                </div>
+                <div class="break">
+                  <input class="form-control" type="password" name="passwords[new]" placeholder="New Password">
+                </div>
+                <button type="submit" class="btn btn-primary pull-right" name="submit" value="Change Password!">Change Password</button>
+              </fieldset>
+            </form>
+          </div>
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" id="btn-sign-out">Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="col-sm-12 game-message">
+    <h3></h3>
+  </div> -->
+  <div class="row">
+  <div class="col-3 col-xs-12 col-sm-3 score-board container">
+    <div class="col-sm-12">
+      <div class="score-board-title">
+        <h2>Scoreboard</h2>
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="col-sm-6 col-xs-3">
+        <div class="player" id="player_x">X:</div>
+      </div>
+      <div class="col-sm-6 col-xs-3">
+        <div class="score" id="player_x_score">0</div>
+      </div>
+    </div>
+    <div class="col-sm-12 ">
+      <div class="col-sm-6 col-xs-3">
+        <div class="player" id="player_o">O:</div>
+      </div>
+      <div class="col-sm-6 col-xs-3">
+        <div class="score" id="player_o_score">0</div>
+      </div>
+    </div>
+  </div>
+
+  <div class=" col-3 container-board col-sm-6">
+
+    <div class="game-message"></div>
+
+
+    <div class="row row-top">
+      <div class="col-xs-4 box col-left" id="0"></div>
+      <div class="col-xs-4 box col-middle" id="1"></div>
+      <div class="col-xs-4 box col-right" id="2"></div>
+    </div>
+
+    <div class="row row-middle">
+      <div class="col-xs-4 box col-left" id="3"></div>
+      <div class="col-xs-4 box col-middle" id="4"></div>
+      <div class="col-xs-4 box col-right" id="5"></div>
+    </div>
+
+    <div class="row row-bottom">
+      <div class="col-xs-4 box col-left" id="6"></div>
+      <div class="col-xs-4 box col-middle" id="7"></div>
+      <div class="col-xs-4 box col-right" id="8"></div>
+    </div>
+
+    <div class="col-xs-12 container-btn-play">
+      <button type="button" class="btn btn-play">Clear Game</button>
+    </div>
+
+  </div>
+
+  <div class="col-3 col-sm-3 container-stats align-items-center">
+    <div class="player_stats">
+      <h2>Player X History</h2>
+    </div>
+
+    <span class='stats' id="games-played">--</span>
+    <h4>Games Played</h4>
+    <span class="stats" id="games-won">--</span>
+    <h4>Games Won</h4>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <span class="copyright">Created By: <a href="https://pnguyen44.github.io/" target="_blank">Phuongnhat Nguyen</a> | 2017</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+
+</html>
