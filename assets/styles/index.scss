@@ -58,7 +58,7 @@ body {
 
 .container-stats {
   text-align: center;
-  margin-top: 7%;
+  // margin-top: 15%;
 }
 
 .game-message {
@@ -68,7 +68,7 @@ body {
   text-align: center;
   margin-top: 2%;
   font-family: "Fredericka the Great", cursive;
-  margin-bottom: 6%;
+  margin-bottom: 15%;
 }
 
 h1 {
@@ -136,9 +136,11 @@ header {
   text-align: center;
   margin: auto;
   font-family: $font-family-Amatic,cursive;
-  margin-top: 7%;
+  // margin-top: 13%;
 }
-
+.score-board, .container-stats {
+  margin-top: 13%;
+}
 .score-board-title {
   text-align: center;
 }
@@ -182,7 +184,7 @@ footer {
     margin-top: 60px;
     }
     footer {
-          margin-top: 15px;
+          margin-top: 12px;
     }
   }
 
@@ -205,8 +207,8 @@ footer {
     font-size: 43px;
   }
 
-  .container-stats {
-    margin-top: 4%;
+  .score-board, .container-stats {
+    margin-top: 20%;
   }
 
 
@@ -228,13 +230,13 @@ footer {
     // margin-top: -7%;
   }
   .game-message {
-    margin-top: 17%;
+    margin-top: 5%;
   }
   h2, h4, .score, .player, .stats, .score-board-title, .game-message, .btn-play {
     font-size: 20px;
   }
   .score-board, .container-stats {
-    margin-top: 21%;
+    margin-top: 17%;
   }
 }
 
