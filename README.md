@@ -1,5 +1,5 @@
 # The Game
-This tic tac toe game was created using HTML, CSS/SASS, jQuery, javascript, AJAX, and Bootstrap. Stylings and formattings of this page was done using HTML and SASS. JavaScript was jQuery was used when writing the game logic, which allowed people to play at a shared computer.
+This tic-tac-toe browser game was my first foray into web development. It allows users to play the game, save it, get scores, and retrieve the previous unfinished game. It was created using Javascript, AJAX, jQuery, Bootstrap, HTML, and CSS/SASS.  I ensured that my app was mobile-friendly to serve users on a variety of devices.
 
 
 ## User Stories
